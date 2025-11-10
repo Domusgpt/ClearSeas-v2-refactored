@@ -1,0 +1,39 @@
+{
+  "name": "clear-seas-enhanced",
+  "version": "1.0.0",
+  "description": "Clear Seas Solutions - Enhanced combined visualizer system merging polytopal field with quantum background effects",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8000 -c-1",
+    "serve": "python -m http.server 8000",
+    "start": "npm run dev"
+  },
+  "keywords": [
+    "visualization",
+    "webgl",
+    "canvas",
+    "polytopal",
+    "quantum",
+    "geometric-cognition",
+    "ai",
+    "clear-seas"
+  ],
+  "author": "Paul Phillips <Paul@clearseassolutions.com>",
+  "license": "PROPRIETARY",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/ClearSeas-Enhanced.git"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "http-server": "^14.1.1",
+    "playwright": "^1.56.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "split-type": "^0.3.4"
+  }
+}

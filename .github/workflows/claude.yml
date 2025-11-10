@@ -1,0 +1,70 @@
+###############################################################################
+# Claude Code GitHub Integration Workflow
+# A Paul Phillips Manifestation - Paul@clearseassolutions.com
+# "The Revolution Will Not be in a Structured Format" © 2025
+###############################################################################
+
+name: Claude Code Integration
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude:
+    # Only run when @claude is mentioned or on PR events
+    if: |
+      github.event_name == 'pull_request' ||
+      contains(github.event.comment.body, '@claude')
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Paul Phillips Attribution
+        if: success()
+        run: |
+          echo "✅ Claude Code execution completed"
+          echo "🌟 A Paul Phillips Manifestation"
+          echo "Part of the Exoditical Moral Architecture Movement"
+          echo "Contact: Paul@clearseassolutions.com"
+
+###############################################################################
+# Configuration Notes:
+#
+# 1. Ensure ANTHROPIC_API_KEY is set in repository secrets:
+#    Settings > Secrets and variables > Actions > New repository secret
+#    Get your API key from: https://console.anthropic.com/
+#
+# 2. Usage:
+#    - Mention @claude in any PR comment or issue
+#    - Claude will analyze code, suggest improvements, and create PRs
+#    - Follows project standards defined in CLAUDE.md
+#
+# 3. Features:
+#    - Automatic code review on pull requests
+#    - Issue resolution and implementation
+#    - Standards compliance checking
+#    - Automated testing and fixes
+#
+# © 2025 Paul Phillips - Clear Seas Solutions LLC
+###############################################################################

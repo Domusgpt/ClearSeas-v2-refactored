@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Seas Solutions — Artificial Intelligence & Machine Cognition Architecture</title>
+    <meta name="description" content="Clear Seas Solutions designs avant-garde artificial intelligence architecture, machine cognition systems, and enterprise technology integrations informed by decades of global maritime innovation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/clear-seas-home.css">
+    <link rel="stylesheet" href="styles/video-backgrounds.css">
+</head>
+<body>
+    <canvas id="polytopal-field" aria-hidden="true"></canvas>
+    <div class="texture-layer" aria-hidden="true"></div>
+
+    <header class="site-header" data-animate="reveal">
+        <div class="container header-inner">
+            <a class="brand" href="#hero">
+                <img src="assets/images/css-logo.png" alt="Clear Seas Solutions" class="brand-logo" style="height: 40px; width: auto; margin-right: 12px;">
+                <span class="brand-name">Clear Seas Solutions</span>
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="nav-toggle-icon" aria-hidden="true"></span>
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <nav id="primary-navigation" class="primary-navigation">
+                <a href="#capabilities">Capabilities</a>
+                <a href="#research">Research</a>
+                <a href="#platforms">Platforms</a>
+                <a href="#engagement">Engagement</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="nav-cta" href="mailto:connect@clearseas.ai">Start a project</a>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section id="hero" class="hero">
+            <!-- Video Background for Hero -->
+            <div class="video-background">
+                <video data-src="assets/videos/hero-bg.mp4" muted loop playsinline class="video-bg-abstract"></video>
+            </div>
+            <div class="container hero-grid">
+                <div class="hero-text" data-animate="reveal">
+                    <p class="eyebrow">Artificial Intelligence • Machine Cognition • Systems Integration</p>
+                    <h1>Intelligent AI solutions built for your business, not someone else's playbook.</h1>
+                    <p class="hero-lede">We're an independent AI consultancy crafting custom-fit solutions for businesses of all sizes—from ambitious startups to global enterprises. No corporate upselling, no cookie-cutter frameworks, just lean, effective AI that actually solves your problems.</p>
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="mailto:connect@clearseas.ai">Get your free consultation</a>
+                        <a class="btn btn-ghost" href="https://parserstor.com" target="_blank" rel="noopener">Parserstor SaaS (beta)</a>
+                    </div>
+                    <ul class="hero-tags">
+                        <li>Small Business Friendly</li>
+                        <li>Free AI Consultation</li>
+                        <li>Custom Solutions</li>
+                        <li>No Corporate Overhead</li>
+                    </ul>
+                </div>
+                <div class="hero-panels" data-animate="reveal" style="--reveal-delay: 0.15s;">
+                    <article class="signal-card">
+                        <!-- Video Background for Signal Card 1 -->
+                        <div class="video-background">
+                            <video data-src="assets/videos/card-cyan.mp4" muted loop playsinline class="video-bg-cyan"></video>
+                        </div>
+                        <h2>Boutique Independence</h2>
+                        <p>As an independent consultancy, we build solutions tailored to your actual needs—not what fits our parent company's product suite. No hidden upsells, no forced platform lock-ins.</p>
+                        <div class="signal-metadata">
+                            <span>Our advantage</span>
+                            <strong>Agile & unbiased</strong>
+                        </div>
+                    </article>
+                    <article class="signal-card">
+                        <!-- Video Background for Signal Card 2 -->
+                        <div class="video-background">
+                            <video data-src="assets/videos/card-tech.mp4" muted loop playsinline class="video-bg-tech"></video>
+                        </div>
+                        <h2>Cost-Effective Excellence</h2>
+                        <p>Without corporate overhead or multi-tier sales funnels, we deliver enterprise-grade AI at lean startup economics. You pay for expertise and results, not bureaucracy.</p>
+                        <div class="signal-metadata">
+                            <span>Pricing philosophy</span>
+                            <strong>Value over volume</strong>
+                        </div>
+                    </article>
+                    <article class="signal-card maritime">
+                        <!-- Video Background for Signal Card 3 -->
+                        <div class="video-background">
+                            <video data-src="assets/videos/card-magenta.mp4" muted loop playsinline class="video-bg-magenta"></video>
+                        </div>
+                        <h2>Real-World Experience</h2>
+                        <p>Decades navigating complex industries—from maritime logistics to regulatory compliance—means we understand business problems, not just algorithms.</p>
+                        <div class="signal-metadata">
+                            <span>Domain expertise</span>
+                            <strong>Battle-tested solutions</strong>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="capabilities" class="section capabilities">
+            <div class="container">
+                <div class="section-heading" data-animate="reveal">
+                    <p class="eyebrow">How we work</p>
+                    <h2>AI consulting that adapts to your business, not the other way around.</h2>
+                    <p>Whether you're a three-person startup or a multinational corporation, we build AI solutions scaled to your needs and budget—from quick-win automations to transformative intelligence platforms.</p>
+                </div>
+                <div class="capabilities-grid">
+                    <article class="capability-card" data-animate="reveal">
+                        <h3>Custom AI Development</h3>
+                        <p>We build AI solutions designed around your specific workflow, data, and goals—whether it's automating repetitive tasks, analyzing customer behavior, or optimizing operations.</p>
+                        <ul>
+                            <li>Process automation & intelligent agents</li>
+                            <li>Custom machine learning models</li>
+                            <li>Data analysis & predictive systems</li>
+                        </ul>
+                    </article>
+                    <article class="capability-card" data-animate="reveal" style="--reveal-delay: 0.1s;">
+                        <h3>AI Strategy & Planning</h3>
+                        <p>Not sure where AI fits in your business? We'll assess your operations, identify high-value opportunities, and create a practical roadmap that makes sense for your budget.</p>
+                        <ul>
+                            <li>Free AI readiness consultation</li>
+                            <li>ROI-focused opportunity mapping</li>
+                            <li>Phased implementation plans</li>
+                        </ul>
+                    </article>
+                    <article class="capability-card" data-animate="reveal" style="--reveal-delay: 0.2s;">
+                        <h3>Integration & Support</h3>
+                        <p>We don't just build and disappear. Our solutions integrate smoothly with your existing tools, and we provide hands-on training and ongoing support.</p>
+                        <ul>
+                            <li>Seamless tool & system integration</li>
+                            <li>Team training & documentation</li>
+                            <li>Flexible support agreements</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section research">
+            <div class="container research-grid">
+                <div class="research-text" data-animate="reveal">
+                    <p class="eyebrow">Our approach</p>
+                    <h2>Practical AI with a research foundation.</h2>
+                    <p>We stay on the cutting edge of AI technology so you don't have to. Our solutions leverage advanced techniques when they actually solve your problem—not just because they're trendy.</p>
+                    <div class="research-points">
+                        <div class="point">
+                            <h3>Problem-First Thinking</h3>
+                            <p>We start with your business challenge, then select the right AI approach—whether that's simple automation or advanced machine learning.</p>
+                        </div>
+                        <div class="point">
+                            <h3>Transparent & Explainable</h3>
+                            <p>No black-box solutions. You'll understand how your AI works, why it makes decisions, and how to maintain it.</p>
+                        </div>
+                        <div class="point">
+                            <h3>Future-Proof Architecture</h3>
+                            <p>We build systems that can grow with you—starting simple and scaling up as your needs evolve.</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="research-lab" data-animate="reveal" style="--reveal-delay: 0.15s;">
+                    <div class="lab-header">
+                        <span class="lab-label">Why we're different</span>
+                        <span class="lab-metric">Independent & Honest</span>
+                    </div>
+                    <p class="lab-description">As a boutique consultancy, we have no incentive to recommend expensive solutions you don't need. Our reputation depends on delivering real value, not hitting sales quotas.</p>
+                    <ul class="lab-list">
+                        <li>No mandatory platform subscriptions</li>
+                        <li>No upselling to premium tiers</li>
+                        <li>Solutions you actually own and control</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section id="platforms" class="section platforms">
+            <div class="container">
+                <div class="section-heading" data-animate="reveal">
+                    <p class="eyebrow">Signature platforms</p>
+                    <h2>Extensible products that amplify our consulting DNA.</h2>
+                    <p>From SaaS parsers to narrative intelligence outlets, our platforms are proving grounds for the systems we design for clients.</p>
+                </div>
+                <div class="platform-grid">
+                    <a class="platform-card" href="https://parserstor.com" target="_blank" rel="noopener" data-animate="reveal">
+                        <div class="platform-heading">
+                            <h3>Parserstor</h3>
+                            <span class="status">Live beta</span>
+                        </div>
+                        <p>Our soft-launched parserator transforms unstructured maritime, regulatory, and commercial data streams into harmonized datasets ready for intelligent orchestration.</p>
+                        <span class="platform-link">Visit parserstor.com →</span>
+                    </a>
+                    <a class="platform-card" href="https://vib3code.com" target="_blank" rel="noopener" data-animate="reveal" style="--reveal-delay: 0.1s;">
+                        <div class="platform-heading">
+                            <h3>Vib3Code</h3>
+                            <span class="status soon">Coming soon</span>
+                        </div>
+                        <p>Media, research artifacts, and exploratory essays on the intersections of AI, cognition, and experiential storytelling.</p>
+                        <span class="platform-link">Explore the forthcoming hub →</span>
+                    </a>
+                    <div class="platform-card" data-animate="reveal" style="--reveal-delay: 0.2s;">
+                        <div class="platform-heading">
+                            <h3>Client intelligence stacks</h3>
+                            <span class="status">Tailored</span>
+                        </div>
+                        <p>Co-created data fabrics, knowledge graphs, and adaptive copilots aligned to each organization's rhythm and risk profile.</p>
+                        <span class="platform-link">Deploy bespoke cognition layers →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="engagement" class="section engagement">
+            <div class="container">
+                <div class="section-heading" data-animate="reveal">
+                    <p class="eyebrow">Engagement arc</p>
+                    <h2>From signal detection to sustained stewardship.</h2>
+                    <p>We activate teams through deliberate phases that respect business cadence while unlocking avant-garde capability.</p>
+                </div>
+                <div class="engagement-steps">
+                    <div class="step" data-animate="reveal">
+                        <div class="step-index">01</div>
+                        <h3>Discovery immersion</h3>
+                        <p>Executive and operator sessions that map ambition, constraints, data realities, and regulatory nuance.</p>
+                    </div>
+                    <div class="step" data-animate="reveal" style="--reveal-delay: 0.1s;">
+                        <div class="step-index">02</div>
+                        <h3>Architectural synthesis</h3>
+                        <p>Polytopal cognition models, integration roadmaps, and pilot environments designed to prove value in controlled waves.</p>
+                    </div>
+                    <div class="step" data-animate="reveal" style="--reveal-delay: 0.2s;">
+                        <div class="step-index">03</div>
+                        <h3>Operational resonance</h3>
+                        <p>Embedded guidance, training curricula, and observability loops that ensure AI becomes a trusted collaborator.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legacy" class="section legacy">
+            <div class="container legacy-grid">
+                <div class="legacy-text" data-animate="reveal">
+                    <p class="eyebrow">Domain intelligence (select)</p>
+                    <h2>Global fisheries & offshore resource expertise.</h2>
+                    <p>Our heritage in seafood production, cold-chain logistics, quota management, and international compliance ensures we speak the language of regulated, capital-intensive industries.</p>
+                    <ul>
+                        <li>Integrated marketing & supply alignment across continents</li>
+                        <li>Regulatory orchestration spanning NOAA, EU, and emerging markets</li>
+                        <li>Product innovation from harvest through to market activation</li>
+                    </ul>
+                </div>
+                <div class="legacy-signal" data-animate="reveal" style="--reveal-delay: 0.15s;">
+                    <div class="legacy-badge">Maritime DNA</div>
+                    <p>Deep domain empathy amplifies our ability to design AI that respects cultural, ecological, and economic dynamics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container contact-grid">
+                <div class="contact-text" data-animate="reveal">
+                    <p class="eyebrow">Let's talk</p>
+                    <h2>Start with a free, no-pressure AI consultation.</h2>
+                    <p>Curious about how AI could help your business? Not sure if it's worth the investment? Let's have an honest conversation about your challenges and explore what's actually possible—with zero obligation and no sales pitch.</p>
+                    <p style="margin-top: 1rem; opacity: 0.9;">We work with businesses of all sizes, from solo entrepreneurs to Fortune 500 companies. If you have a problem AI might solve, we want to hear about it.</p>
+                </div>
+                <div class="contact-actions" data-animate="reveal" style="--reveal-delay: 0.1s;">
+                    <a class="btn btn-primary" href="mailto:connect@clearseas.ai">Get your free consultation</a>
+                    <a class="btn btn-ghost" href="mailto:connect@clearseas.ai">Email us directly</a>
+                    <a class="btn btn-soft" href="https://parserstor.com" target="_blank" rel="noopener">See Parserstor Demo</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="brand-mark" aria-hidden="true">◇</span>
+                <span>Clear Seas Solutions</span>
+            </div>
+            <p class="footer-copy">© <span id="current-year"></span> Clear Seas Solutions. Precision AI architecture for visionary enterprises.</p>
+            <p class="footer-signature">🌟 A Paul Phillips Manifestation</p>
+        </div>
+    </footer>
+
+    <script src="scripts/clear-seas-home.js" defer></script>
+    <script src="scripts/video-backgrounds.js" defer></script>
+</body>
+</html>

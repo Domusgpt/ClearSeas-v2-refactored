@@ -1,0 +1,114 @@
+/* Clear Seas Enhanced Styles
+ * Additional styles for combined visualization system
+ * © 2025 Clear Seas Solutions LLC - Paul Phillips
+ */
+
+/* ========================================
+ * Z-INDEX HIERARCHY - ORTHOGONAL DEPTH SYSTEM
+ * ========================================
+ * -3: Polytopal field (bottom background)
+ * -1: Quantum background (revealed through content gaps)
+ * 1: Content (.site-main) - above visualizer
+ * 12: Header (sticky)
+ *
+ * Visualizer is BEHIND everything, revealed strategically
+ */
+
+/* 3D Perspective Setup for Orthogonal Depth Progression */
+body {
+    perspective: 1200px;
+    perspective-origin: center center;
+    transform-style: preserve-3d;
+}
+
+#polytopal-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    pointer-events: none;
+}
+
+/* Quantum Background - Behind EVERYTHING */
+#quantum-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind all content */
+    pointer-events: none;
+    opacity: 0; /* Start hidden - JavaScript controls dynamic opacity during scroll */
+    mix-blend-mode: screen;
+    /* Smooth transitions for JS-controlled opacity (disabled to let GSAP handle) */
+    /* transition: opacity 0.3s ease-out; */
+}
+
+/* Main content above visualizer */
+.site-main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Sections support 3D transforms */
+section {
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+/* Cards - Orthogonal Z-Axis Depth Progression */
+.signal-card,
+.card,
+.capability-card {
+    position: relative; /* Keep in document flow - DON'T use absolute */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+
+    /* Initial state - far in Z-space (set by JavaScript) */
+    /* NOTE: JavaScript will set translateZ, scale, opacity, blur */
+    /* Cards stay in their normal layout positions (flexbox/grid) */
+    opacity: 1; /* Start visible, JS will animate */
+
+    /* Smooth transitions */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Ensure card content is above visualizers */
+.signal-card > *:not(canvas),
+.card > *:not(canvas),
+.capability-card > *:not(canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Element visualizer canvases */
+.element-visualizer-canvas {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Video backgrounds should be behind element visualizers */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.3;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}

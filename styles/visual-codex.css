@@ -1,0 +1,602 @@
+/*
+ * Visual Codex Styles for Reposiologist
+ * Holographic Parallax + Neoskeuomorphic UI + Reality Distortion
+ * A Paul Phillips Manifestation - VIB34D System
+ */
+
+:root {
+    /* Visual Codex Color Extensions */
+    --vcodex-glow-cyan: rgba(0, 255, 255, 0.6);
+    --vcodex-glow-magenta: rgba(255, 0, 255, 0.6);
+    --vcodex-glow-lime: rgba(0, 255, 170, 0.6);
+    --vcodex-glow-purple: rgba(192, 132, 252, 0.6);
+
+    /* Depth System for 3D transforms */
+    --depth-near: 50px;
+    --depth-mid: 100px;
+    --depth-far: 150px;
+
+    /* Mobile Touch Targets */
+    --touch-target: 56px;
+}
+
+/* ============================================
+   HOLOGRAPHIC BACKGROUND SYSTEM
+   ============================================ */
+
+.vcodex-holographic-bg {
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.vcodex-holo-layer {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    transition: transform 0.1s ease-out, opacity 0.3s ease;
+}
+
+.vcodex-holo-layer-1 {
+    background: radial-gradient(circle at 30% 30%, var(--vcodex-glow-cyan), transparent 60%);
+    mix-blend-mode: screen;
+    opacity: 0.3;
+    transform: translateZ(var(--depth-near));
+}
+
+.vcodex-holo-layer-2 {
+    background: radial-gradient(circle at 70% 70%, var(--vcodex-glow-magenta), transparent 60%);
+    mix-blend-mode: overlay;
+    opacity: 0.3;
+    transform: translateZ(var(--depth-mid));
+}
+
+.vcodex-holo-layer-3 {
+    background: linear-gradient(135deg,
+        var(--vcodex-glow-cyan) 0%,
+        transparent 50%,
+        var(--vcodex-glow-magenta) 100%);
+    mix-blend-mode: color-dodge;
+    opacity: 0.2;
+    transform: translateZ(var(--depth-far));
+}
+
+.vcodex-holo-layer-4 {
+    background: conic-gradient(from 90deg,
+        rgba(56, 189, 248, 0.3),
+        transparent 45%,
+        var(--vcodex-glow-purple) 90%,
+        rgba(56, 189, 248, 0.3));
+    mix-blend-mode: soft-light;
+    opacity: 0.25;
+    animation: rotate-holo 20s linear infinite;
+}
+
+@keyframes rotate-holo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   NEOSKEUOMORPHIC CARD SYSTEM
+   ============================================ */
+
+.vcodex-neoskeu-card {
+    background: linear-gradient(145deg, #1e1e2e, #16182e);
+    border-radius: 20px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Advanced layered shadows */
+    box-shadow:
+        20px 20px 60px rgba(0, 0, 0, 0.8),
+        -10px -10px 30px rgba(255, 255, 255, 0.02),
+        inset 2px 2px 8px rgba(255, 255, 255, 0.05),
+        inset -2px -2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.vcodex-neoskeu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+        rgba(0, 255, 255, 0.2) 0%,
+        transparent 50%,
+        rgba(255, 0, 255, 0.2) 100%);
+    mix-blend-mode: overlay;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.vcodex-neoskeu-card:hover {
+    transform: translateY(-10px) scale(1.02) translateZ(20px);
+    box-shadow:
+        25px 25px 80px rgba(0, 0, 0, 0.9),
+        -15px -15px 40px rgba(255, 255, 255, 0.03),
+        inset 3px 3px 12px rgba(255, 255, 255, 0.08),
+        inset -3px -3px 12px rgba(0, 0, 0, 0.6),
+        0 0 40px var(--vcodex-glow-cyan);
+}
+
+.vcodex-neoskeu-card:hover::before {
+    opacity: 1;
+}
+
+.vcodex-neoskeu-card:active {
+    transform: translateY(-5px) scale(0.98);
+}
+
+/* Deep-inset variant for code blocks */
+.vcodex-neoskeu-inset {
+    background: linear-gradient(145deg, #0a0a0f, #141418);
+    border-radius: 16px;
+    box-shadow:
+        inset 8px 8px 16px rgba(0, 0, 0, 0.9),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+}
+
+/* ============================================
+   HOLOGRAPHIC BUTTON SYSTEM
+   ============================================ */
+
+.vcodex-holo-button {
+    position: relative;
+    background: linear-gradient(135deg, #00aaff, #00ffaa);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 15px rgba(0, 170, 255, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.vcodex-holo-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.vcodex-holo-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 8px 25px rgba(0, 170, 255, 0.6),
+        inset 0 2px 6px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(0, 255, 255, 0.8);
+}
+
+.vcodex-holo-button:hover::before {
+    left: 100%;
+}
+
+.vcodex-holo-button:active {
+    transform: translateY(0px) scale(0.98);
+}
+
+/* ============================================
+   ANIMATED HOLOGRAPHIC HEADER
+   ============================================ */
+
+.vcodex-holo-header {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.vcodex-holo-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--vcodex-glow-cyan),
+        var(--vcodex-glow-magenta),
+        transparent
+    );
+    animation: holo-border-flow 3s linear infinite;
+}
+
+@keyframes holo-border-flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ============================================
+   GLOWING TEXT EFFECTS
+   ============================================ */
+
+.vcodex-glow-text {
+    text-shadow:
+        0 0 10px var(--vcodex-glow-cyan),
+        0 0 20px var(--vcodex-glow-cyan),
+        0 0 30px rgba(0, 255, 255, 0.4);
+    animation: text-pulse 2s ease-in-out infinite;
+}
+
+@keyframes text-pulse {
+    0%, 100% {
+        text-shadow:
+            0 0 10px var(--vcodex-glow-cyan),
+            0 0 20px var(--vcodex-glow-cyan),
+            0 0 30px rgba(0, 255, 255, 0.4);
+    }
+    50% {
+        text-shadow:
+            0 0 15px var(--vcodex-glow-cyan),
+            0 0 30px var(--vcodex-glow-cyan),
+            0 0 45px rgba(0, 255, 255, 0.6);
+    }
+}
+
+.vcodex-glow-text-magenta {
+    text-shadow:
+        0 0 10px var(--vcodex-glow-magenta),
+        0 0 20px var(--vcodex-glow-magenta),
+        0 0 30px rgba(255, 0, 255, 0.4);
+    animation: text-pulse-magenta 2s ease-in-out infinite;
+}
+
+@keyframes text-pulse-magenta {
+    0%, 100% {
+        text-shadow:
+            0 0 10px var(--vcodex-glow-magenta),
+            0 0 20px var(--vcodex-glow-magenta),
+            0 0 30px rgba(255, 0, 255, 0.4);
+    }
+    50% {
+        text-shadow:
+            0 0 15px var(--vcodex-glow-magenta),
+            0 0 30px var(--vcodex-glow-magenta),
+            0 0 45px rgba(255, 0, 255, 0.6);
+    }
+}
+
+/* ============================================
+   REALITY DISTORTION EFFECTS
+   ============================================ */
+
+.vcodex-distortion-text {
+    position: relative;
+    display: inline-block;
+}
+
+.vcodex-distortion-text::before,
+.vcodex-distortion-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+}
+
+.vcodex-distortion-text::before {
+    color: rgba(0, 255, 255, 0.7);
+    animation: distort-1 2.5s infinite;
+}
+
+.vcodex-distortion-text::after {
+    color: rgba(255, 0, 255, 0.7);
+    animation: distort-2 2.5s infinite;
+}
+
+@keyframes distort-1 {
+    0%, 100% { transform: translate(0); }
+    33% { transform: translate(-2px, 1px); }
+    66% { transform: translate(2px, -1px); }
+}
+
+@keyframes distort-2 {
+    0%, 100% { transform: translate(0); }
+    33% { transform: translate(2px, 1px); }
+    66% { transform: translate(-2px, -1px); }
+}
+
+/* ============================================
+   HOLOGRAPHIC SPINNER
+   ============================================ */
+
+.vcodex-holo-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid transparent;
+    border-top-color: var(--vcodex-glow-cyan);
+    border-right-color: var(--vcodex-glow-magenta);
+    border-radius: 50%;
+    animation: holo-spin 1s linear infinite;
+    box-shadow:
+        0 0 15px var(--vcodex-glow-cyan),
+        inset 0 0 15px var(--vcodex-glow-magenta);
+}
+
+@keyframes holo-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   STATUS INDICATORS WITH GLOW
+   ============================================ */
+
+.vcodex-status-complete {
+    background: linear-gradient(135deg, #00ffaa, #00ff66);
+    box-shadow:
+        0 0 15px rgba(0, 255, 170, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 4px 12px;
+}
+
+.vcodex-status-pending {
+    background: linear-gradient(135deg, #00aaff, #0088ff);
+    box-shadow:
+        0 0 15px rgba(0, 170, 255, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 4px 12px;
+}
+
+.vcodex-status-error {
+    background: linear-gradient(135deg, #ff3366, #ff0044);
+    box-shadow:
+        0 0 15px rgba(255, 51, 102, 0.8),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 4px 12px;
+}
+
+/* ============================================
+   INTERACTIVE PARALLAX CONTAINER
+   ============================================ */
+
+.vcodex-parallax-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.vcodex-parallax-content {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+/* Enhanced parallax layers with depth */
+.vcodex-parallax-layer-near {
+    transform: translateZ(var(--depth-near));
+}
+
+.vcodex-parallax-layer-mid {
+    transform: translateZ(var(--depth-mid));
+}
+
+.vcodex-parallax-layer-far {
+    transform: translateZ(var(--depth-far));
+}
+
+/* ============================================
+   GLASSMORPHISM ENHANCEMENTS
+   ============================================ */
+
+.vcodex-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.vcodex-glass-intense {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(56, 189, 248, 0.2);
+}
+
+/* ============================================
+   SCAN LINE EFFECT (Reality Distortion)
+   ============================================ */
+
+.vcodex-scan-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+    animation: scan-move 10s linear infinite;
+}
+
+@keyframes scan-move {
+    to { transform: translateY(10px); }
+}
+
+/* ============================================
+   INTERACTIVE ENHANCEMENT UTILITIES
+   ============================================ */
+
+/* Smooth hover lift */
+.vcodex-hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vcodex-hover-lift:hover {
+    transform: translateY(-8px) translateZ(20px);
+}
+
+/* Glow on hover */
+.vcodex-hover-glow {
+    transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.vcodex-hover-glow:hover {
+    box-shadow:
+        0 0 20px var(--vcodex-glow-cyan),
+        0 0 40px rgba(0, 255, 255, 0.4);
+    filter: brightness(1.15);
+}
+
+/* Pulse animation */
+.vcodex-pulse {
+    animation: vcodex-pulse-anim 2s ease-in-out infinite;
+}
+
+@keyframes vcodex-pulse-anim {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================
+   SCROLL CHOREOGRAPHY ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.vcodex-scroll-fade-in {
+    animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.vcodex-scroll-scale {
+    animation: fade-in-scale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Stagger delays for sequential animations */
+.vcodex-stagger-1 { animation-delay: 100ms; }
+.vcodex-stagger-2 { animation-delay: 200ms; }
+.vcodex-stagger-3 { animation-delay: 300ms; }
+.vcodex-stagger-4 { animation-delay: 400ms; }
+.vcodex-stagger-5 { animation-delay: 500ms; }
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .vcodex-neoskeu-card {
+        /* Reduce expensive effects on mobile */
+        box-shadow:
+            15px 15px 40px rgba(0, 0, 0, 0.8),
+            -8px -8px 20px rgba(255, 255, 255, 0.02);
+    }
+
+    .vcodex-holo-layer {
+        /* Reduce blend mode intensity */
+        opacity: 0.15;
+    }
+
+    .vcodex-holo-button,
+    .vcodex-neoskeu-card {
+        /* Ensure touch targets */
+        min-width: var(--touch-target);
+        min-height: var(--touch-target);
+    }
+
+    .vcodex-glass,
+    .vcodex-glass-intense {
+        /* Reduce backdrop blur on mobile for performance */
+        backdrop-filter: blur(8px) saturate(150%);
+        -webkit-backdrop-filter: blur(8px) saturate(150%);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .vcodex-neoskeu-card,
+    .vcodex-glass,
+    .vcodex-glass-intense {
+        border-width: 2px;
+    }
+
+    .vcodex-holo-layer {
+        opacity: 0.5;
+    }
+}
+
+/*
+ * © 2025 Paul Phillips - Clear Seas Solutions LLC
+ * A Paul Phillips Manifestation
+ * Paul@clearseassolutions.com
+ * "The Revolution Will Not be in a Structured Format"
+ */
