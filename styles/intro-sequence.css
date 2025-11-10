@@ -1,0 +1,348 @@
+/**
+ * Intro Sequence Styles - Logo & Company Name Animation
+ * Dramatic entrance with flourish effects
+ * © 2025 Clear Seas Solutions LLC
+ */
+
+/* ===== INTRO OVERLAY ===== */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(10, 15, 25, 0.95), rgba(5, 8, 15, 0.98));
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(20px);
+}
+
+.intro-content {
+    text-align: center;
+    perspective: 1000px;
+}
+
+.intro-logo-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 3rem;
+}
+
+.intro-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 40px rgba(0, 212, 255, 0.5));
+    position: relative;
+    z-index: 2;
+}
+
+.intro-company-name {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    text-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+}
+
+.company-word {
+    display: inline-block;
+}
+
+.intro-tagline {
+    font-size: 1.5rem;
+    color: rgba(0, 212, 255, 0.9);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ===== LOGO FLOURISH ANIMATIONS ===== */
+.logo-flourish,
+.header-flourish {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Pulse Flourish */
+.flourish-pulse {
+    animation: flourish-pulse 1.5s ease-out;
+}
+
+@keyframes flourish-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+        border-radius: 50%;
+    }
+    50% {
+        box-shadow: 0 0 0 100px rgba(0, 212, 255, 0),
+                    0 0 0 150px rgba(0, 212, 255, 0);
+        border-radius: 50%;
+    }
+}
+
+/* Ripple Flourish */
+.flourish-ripple::before,
+.flourish-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(0, 212, 255, 0.6);
+    border-radius: 50%;
+    animation: flourish-ripple 1.2s ease-out;
+}
+
+.flourish-ripple::after {
+    animation-delay: 0.3s;
+}
+
+@keyframes flourish-ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* Spiral Flourish */
+.flourish-spiral {
+    animation: flourish-spiral 2s ease-in-out;
+}
+
+@keyframes flourish-spiral {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+        opacity: 0;
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(720deg) scale(1.5);
+        opacity: 0;
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Quantum Flourish */
+.flourish-quantum {
+    animation: flourish-quantum 1.5s ease-out;
+}
+
+@keyframes flourish-quantum {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(0, 212, 255, 0.8),
+            0 0 40px rgba(0, 212, 255, 0.6),
+            0 0 60px rgba(0, 212, 255, 0.4);
+        filter: brightness(1);
+    }
+    25%, 75% {
+        box-shadow:
+            0 0 40px rgba(255, 0, 110, 0.8),
+            0 0 80px rgba(255, 0, 110, 0.6),
+            0 0 120px rgba(255, 0, 110, 0.4);
+        filter: brightness(1.5);
+    }
+    50% {
+        box-shadow:
+            0 0 60px rgba(192, 132, 252, 0.8),
+            0 0 120px rgba(192, 132, 252, 0.6),
+            0 0 180px rgba(192, 132, 252, 0.4);
+        filter: brightness(2);
+    }
+}
+
+/* Wave Flourish */
+.flourish-wave::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 300%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(0, 212, 255, 0.3),
+        transparent
+    );
+    animation: flourish-wave 1.5s ease-in-out;
+}
+
+@keyframes flourish-wave {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Crystal Flourish */
+.flourish-crystal {
+    animation: flourish-crystal 1.8s ease-out;
+}
+
+@keyframes flourish-crystal {
+    0% {
+        clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        clip-path: polygon(
+            50% 0%,
+            100% 50%,
+            50% 100%,
+            0% 50%
+        );
+        transform: translate(-50%, -50%) rotate(180deg);
+        box-shadow: 0 0 80px rgba(0, 212, 255, 0.8);
+    }
+    100% {
+        clip-path: polygon(
+            50% 0%,
+            100% 25%,
+            100% 75%,
+            50% 100%,
+            0% 75%,
+            0% 25%
+        );
+        transform: translate(-50%, -50%) rotate(360deg);
+        box-shadow: 0 0 0px rgba(0, 212, 255, 0);
+    }
+}
+
+/* ===== CARD GRADIENT BACKGROUNDS ===== */
+.card-gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+    transition: opacity 0.4s ease;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.signal-card:hover .card-gradient-bg,
+.capability-card:hover .card-gradient-bg {
+    opacity: 0.5;
+}
+
+/* Gradient Variations */
+[data-gradient="cyan"] {
+    background: radial-gradient(circle at top left,
+        rgba(0, 212, 255, 0.4),
+        rgba(0, 150, 200, 0.2),
+        transparent 70%
+    );
+}
+
+[data-gradient="purple"] {
+    background: radial-gradient(circle at top right,
+        rgba(192, 132, 252, 0.4),
+        rgba(150, 100, 200, 0.2),
+        transparent 70%
+    );
+}
+
+[data-gradient="magenta"] {
+    background: radial-gradient(circle at bottom,
+        rgba(255, 0, 110, 0.4),
+        rgba(200, 0, 80, 0.2),
+        transparent 70%
+    );
+}
+
+[data-gradient="green"] {
+    background: radial-gradient(circle at center,
+        rgba(0, 255, 150, 0.4),
+        rgba(0, 200, 120, 0.2),
+        transparent 70%
+    );
+}
+
+[data-gradient="orange"] {
+    background: radial-gradient(circle at top,
+        rgba(255, 150, 0, 0.4),
+        rgba(200, 120, 0, 0.2),
+        transparent 70%
+    );
+}
+
+/* Animated gradient on hover */
+.signal-card:hover [data-gradient],
+.capability-card:hover [data-gradient] {
+    animation: gradient-pulse 2s ease-in-out infinite;
+}
+
+@keyframes gradient-pulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(1.1);
+        filter: brightness(1.3);
+    }
+}
+
+/* ===== HEADER LOGO FLOURISH CONTAINER ===== */
+.header-logo-flourish-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.header-flourish {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 200%;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .intro-logo-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .intro-company-name {
+        font-size: 2.5rem;
+        gap: 1rem;
+        flex-direction: column;
+    }
+
+    .intro-tagline {
+        font-size: 1rem;
+    }
+}

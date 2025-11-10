@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles/visual-codex.css">
     <link rel="stylesheet" href="styles/clear-seas-enhanced.css">
     <link rel="stylesheet" href="styles/video-backgrounds.css">
+    <link rel="stylesheet" href="styles/intro-sequence.css">
 
     <!-- GSAP from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -82,10 +83,8 @@
                     </ul>
                 </div>
                 <div class="hero-panels" data-animate="reveal" style="--reveal-delay: 0.15s;">
-                    <article class="signal-card vcodex-neoskeu-card vcodex-glass">
-                        <div class="video-background">
-                            <video data-src="assets/videos/card-cyan.mp4" muted loop playsinline class="video-bg-cyan"></video>
-                        </div>
+                    <article class="signal-card vcodex-neoskeu-card vcodex-glass" data-card-hue="180">
+                        <div class="card-gradient-bg" data-gradient="cyan"></div>
                         <h2>Boutique Independence</h2>
                         <p>As an independent consultancy, we build solutions tailored to your actual needs—not what fits our parent company's product suite. No hidden upsells, no forced platform lock-ins.</p>
                         <div class="signal-metadata">
@@ -93,10 +92,8 @@
                             <strong>Agile & unbiased</strong>
                         </div>
                     </article>
-                    <article class="signal-card vcodex-neoskeu-card vcodex-glass">
-                        <div class="video-background">
-                            <video data-src="assets/videos/card-tech.mp4" muted loop playsinline class="video-bg-tech"></video>
-                        </div>
+                    <article class="signal-card vcodex-neoskeu-card vcodex-glass" data-card-hue="280">
+                        <div class="card-gradient-bg" data-gradient="purple"></div>
                         <h2>Cost-Effective Excellence</h2>
                         <p>Without corporate overhead or multi-tier sales funnels, we deliver enterprise-grade AI at lean startup economics. You pay for expertise and results, not bureaucracy.</p>
                         <div class="signal-metadata">
@@ -104,10 +101,8 @@
                             <strong>Value over volume</strong>
                         </div>
                     </article>
-                    <article class="signal-card vcodex-neoskeu-card vcodex-glass maritime">
-                        <div class="video-background">
-                            <video data-src="assets/videos/card-magenta.mp4" muted loop playsinline class="video-bg-magenta"></video>
-                        </div>
+                    <article class="signal-card vcodex-neoskeu-card vcodex-glass maritime" data-card-hue="330">
+                        <div class="card-gradient-bg" data-gradient="magenta"></div>
                         <h2>Real-World Experience</h2>
                         <p>Decades navigating complex industries—from maritime logistics to regulatory compliance—means we understand business problems, not just algorithms.</p>
                         <div class="signal-metadata">
@@ -421,6 +416,7 @@
     <!-- Enhanced Visualization System -->
     <script type="module">
         import { ClearSeasEnhancedApplication } from './src/js/app-enhanced.js';
+        import { IntroSequence } from './src/js/enhancements/IntroSequence.js';
 
         // Initialize when DOM is ready
         if (document.readyState === 'loading') {
@@ -430,13 +426,26 @@
         }
 
         async function initApp() {
+            console.log('🌊 Initializing Clear Seas with Intro Sequence...');
+
+            // ✨ Create and play intro sequence
+            const intro = new IntroSequence(gsap);
+
+            // Play intro, then initialize app
+            await intro.play();
+
             console.log('🌊 Initializing Clear Seas Enhanced Application...');
             const app = new ClearSeasEnhancedApplication();
             await app.initialize();
 
+            // Setup logo interactions (click for flourishes)
+            intro.setupLogoInteractions();
+
             // Make available globally for debugging
             window.clearSeasApp = app;
+            window.introSequence = intro;
             console.log('✅ Application available at window.clearSeasApp');
+            console.log('✨ Intro available at window.introSequence (click logo for flourishes!)');
         }
     </script>
 </body>

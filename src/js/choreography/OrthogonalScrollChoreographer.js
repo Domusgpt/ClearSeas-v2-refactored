@@ -73,12 +73,12 @@ export class OrthogonalScrollChoreographer {
                 selector: '#hero',
                 cards: '.signal-card',
                 visualizerState: {
-                    geometry: 2, // SPHERE - welcoming
+                    geometry: 2, // SPHERE - welcoming, organic
                     hue: 180,
-                    intensity: 0.4, // Start dim
-                    chaos: 0.05,
-                    speed: 0.7,
-                    gridDensity: 15
+                    intensity: 0.8, // ⬆️ DRAMATIC: Much brighter
+                    chaos: 0.05, // Calm, welcoming
+                    speed: 1.2, // ⬆️ DRAMATIC: Faster movement
+                    gridDensity: 25 // ⬆️ DRAMATIC: Denser patterns
                 },
                 scrollTimeline: [
                     { progress: 0.0, action: 'revealVisualizer', intensity: 0.4 },
@@ -96,10 +96,10 @@ export class OrthogonalScrollChoreographer {
                 visualizerState: {
                     geometry: 7, // CRYSTAL - structured complexity
                     hue: 280,
-                    intensity: 0.7,
-                    chaos: 0.2,
-                    speed: 1.0,
-                    gridDensity: 30
+                    intensity: 0.9, // ⬆️ DRAMATIC: Very bright
+                    chaos: 0.3, // ⬆️ DRAMATIC: More energy
+                    speed: 1.5, // ⬆️ DRAMATIC: Fast movement
+                    gridDensity: 45 // ⬆️ DRAMATIC: Very dense lattice
                 },
                 scrollTimeline: [
                     { progress: 0.0, action: 'revealVisualizer', intensity: 0.7 },
@@ -118,10 +118,10 @@ export class OrthogonalScrollChoreographer {
                 visualizerState: {
                     geometry: 5, // FRACTAL - research complexity
                     hue: 200,
-                    intensity: 0.9,
-                    chaos: 0.4,
-                    speed: 1.3,
-                    gridDensity: 45
+                    intensity: 1.0, // ⬆️ DRAMATIC: Maximum brightness
+                    chaos: 0.5, // ⬆️ DRAMATIC: Chaotic complexity
+                    speed: 1.8, // ⬆️ DRAMATIC: Very fast
+                    gridDensity: 60 // ⬆️ DRAMATIC: Extremely dense
                 },
                 scrollTimeline: [
                     { progress: 0.0, action: 'revealVisualizer', intensity: 0.9 },
@@ -138,10 +138,10 @@ export class OrthogonalScrollChoreographer {
                 visualizerState: {
                     geometry: 0, // TETRAHEDRON - foundation/simplicity
                     hue: 240,
-                    intensity: 0.5,
-                    chaos: 0.1,
-                    speed: 0.6,
-                    gridDensity: 12
+                    intensity: 0.6, // DRAMATIC: Moderate
+                    chaos: 0.05, // ⬇️ DRAMATIC: Very calm
+                    speed: 0.5, // ⬇️ DRAMATIC: Slow, peaceful
+                    gridDensity: 10 // ⬇️ DRAMATIC: Sparse, simple
                 },
                 scrollTimeline: [
                     { progress: 0.0, action: 'revealVisualizer', intensity: 0.5 },
