@@ -239,11 +239,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0;
     opacity: 0.3;
     transition: opacity 0.4s ease;
     border-radius: inherit;
     overflow: hidden;
+    pointer-events: none; /* Don't block card content */
+}
+
+/* Ensure card content is above gradient */
+.signal-card > *:not(.card-gradient-bg),
+.capability-card > *:not(.card-gradient-bg) {
+    position: relative;
+    z-index: 1;
 }
 
 .signal-card:hover .card-gradient-bg,

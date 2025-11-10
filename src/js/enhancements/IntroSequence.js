@@ -58,6 +58,12 @@ export class IntroSequence {
         // Skip if already played this session (unless forced)
         if (this.hasPlayed && !skipIntro) {
             console.log('🎬 Intro: Skipping (already played this session)');
+            // Ensure hero is visible if skipping
+            const heroSection = document.querySelector('#hero');
+            if (heroSection) {
+                heroSection.style.opacity = '1';
+                heroSection.style.transform = 'scale(1)';
+            }
             return;
         }
 
@@ -69,7 +75,7 @@ export class IntroSequence {
         const words = overlay.querySelectorAll('.company-word');
         const tagline = overlay.querySelector('.intro-tagline');
 
-        // Hide hero section initially
+        // Hide hero section initially ONLY if playing intro
         const heroSection = document.querySelector('#hero');
         if (heroSection) {
             heroSection.style.opacity = '0';
