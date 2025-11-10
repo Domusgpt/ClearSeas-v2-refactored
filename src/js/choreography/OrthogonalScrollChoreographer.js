@@ -114,7 +114,7 @@ export class OrthogonalScrollChoreographer {
             {
                 id: 'research',
                 selector: '#research',
-                cards: '.card, .signal-card',
+                cards: '.point', // ✅ FIXED: Use actual .point elements
                 visualizerState: {
                     geometry: 5, // FRACTAL - research complexity
                     hue: 200,
@@ -134,7 +134,7 @@ export class OrthogonalScrollChoreographer {
             {
                 id: 'contact',
                 selector: '#contact',
-                cards: '.contact-card',
+                cards: '.contact-actions', // ✅ FIXED: Use actual .contact-actions element
                 visualizerState: {
                     geometry: 0, // TETRAHEDRON - foundation/simplicity
                     hue: 240,
@@ -508,10 +508,20 @@ export class OrthogonalScrollChoreographer {
     /**
      * Called when entering a section
      * OPTIMIZED for smooth visualizer state transitions
+     * BROADCASTS section state for VIB3+ card hover integration
      */
     onSectionEnter(section, sectionIndex) {
         this.currentSection = sectionIndex;
         console.log(`📍 Entering section: ${section.id}`);
+
+        // 🎯 BROADCAST section state for VIB3+ card interactions to listen
+        window.dispatchEvent(new CustomEvent('vib3-section-change', {
+            detail: {
+                sectionId: section.id,
+                sectionIndex: sectionIndex,
+                visualizerState: section.visualizerState
+            }
+        }));
 
         // Smoothly apply visualizer state with GSAP for animated transition
         if (this.visualizer && this.visualizer.params) {

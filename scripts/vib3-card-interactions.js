@@ -1,6 +1,7 @@
 /**
  * VIB3+ Card Holographic Float & Tilt System
  * Interactive card bending with dynamic VIB3+ engine visualization
+ * ✅ INTEGRATED WITH SCROLL CHOREOGRAPHY - Uses section-based parameters
  * © 2025 Clear Seas Solutions
  */
 
@@ -13,6 +14,9 @@
   let activeCard = null;
   let rafId = null;
 
+  // 🎯 SCROLL CHOREOGRAPHY INTEGRATION
+  let currentSectionState = null;
+
   // Configuration
   const CONFIG = {
     tiltStrength: 15,        // Max tilt degrees
@@ -22,6 +26,52 @@
     transitionSpeed: 200,    // Transition duration in ms
     vib3Scale: 0.4,          // Scale of VIB3+ iframe
   };
+
+  /**
+   * 🎯 LISTEN FOR SECTION CHANGES from OrthogonalScrollChoreographer
+   */
+  window.addEventListener('vib3-section-change', (e) => {
+    currentSectionState = e.detail.visualizerState;
+    console.log(`🎨 VIB3+ Cards: Section changed to ${e.detail.sectionId}, using harmonious parameters`);
+
+    // 🧹 CLEANUP: Remove iframe when section changes to prevent accumulation
+    if (vib3Frame && vib3Frame.parentNode) {
+      vib3Frame.remove();
+      vib3Frame = null;
+    }
+    if (vib3Container && vib3Container.parentNode) {
+      vib3Container.remove();
+      vib3Container = null;
+    }
+    activeCard = null;
+  });
+
+  /**
+   * 🎯 GET COMPLEMENTARY GEOMETRY based on background visualizer
+   * Creates visual harmony between background and card hover
+   */
+  function getComplementaryGeometry(backgroundGeometry) {
+    const pairs = {
+      0: 'tesseract',    // Tetrahedron → Tesseract (4D cube)
+      1: '24-cell',      // Hypercube → 24-cell (dual)
+      2: '120-cell',     // Sphere → 120-cell (organic)
+      3: '600-cell',     // Torus → 600-cell (complex)
+      4: '16-cell',      // Klein → 16-cell (orthogonal)
+      5: '5-cell',       // Fractal → 5-cell (simplest 4D)
+      6: 'tesseract',    // Wave → Tesseract (structured)
+      7: '24-cell'       // Crystal → 24-cell (lattice)
+    };
+    return pairs[backgroundGeometry] || 'tesseract';
+  }
+
+  /**
+   * 🎯 GET HARMONIOUS HUE based on section hue
+   * Uses color theory for pleasing combinations
+   */
+  function getHarmoniousHue(baseHue) {
+    // Complementary color (opposite on color wheel) - offset by 60° for triadic harmony
+    return (baseHue + 60) % 360;
+  }
 
   /**
    * Initialize VIB3+ container (hidden by default)
@@ -43,12 +93,19 @@
       mix-blend-mode: screen;
     `;
 
-    // Create iframe with randomized URL parameters
-    const randomGeometry = ['tesseract', '24-cell', '600-cell', '120-cell'][Math.floor(Math.random() * 4)];
-    const randomHue = Math.floor(Math.random() * 360);
+    // 🎯 Use section-based parameters if available, otherwise random fallback
+    let geometry, hue;
+    if (currentSectionState) {
+      geometry = getComplementaryGeometry(currentSectionState.geometry);
+      hue = getHarmoniousHue(currentSectionState.hue);
+    } else {
+      // Fallback to random if section state not yet loaded
+      geometry = ['tesseract', '24-cell', '600-cell', '120-cell'][Math.floor(Math.random() * 4)];
+      hue = Math.floor(Math.random() * 360);
+    }
 
     vib3Frame = document.createElement('iframe');
-    vib3Frame.src = `https://domusgpt.github.io/vib3-plus-engine/?geo=${randomGeometry}&hue=${randomHue}&auto=1`;
+    vib3Frame.src = `https://domusgpt.github.io/vib3-plus-engine/?geo=${geometry}&hue=${hue}&auto=1&debug=false&quiet=true`;
     vib3Frame.style.cssText = `
       width: 1000px;
       height: 1000px;
@@ -140,6 +197,7 @@
 
   /**
    * Handle card mouse enter
+   * 🎯 USES SECTION-BASED PARAMETERS for visual harmony
    */
   function handleCardEnter(card) {
     initVib3Container();
@@ -149,12 +207,21 @@
     card.style.transformStyle = 'preserve-3d';
     card.style.willChange = 'transform';
 
-    // Randomize VIB3+ engine on each hover
-    const randomGeometry = ['tesseract', '24-cell', '600-cell', '120-cell', '16-cell', '5-cell'][Math.floor(Math.random() * 6)];
-    const randomHue = Math.floor(Math.random() * 360);
-    const randomIntensity = 0.6 + (Math.random() * 0.4);
+    // 🎯 Use section-based parameters for visual coherence
+    let geometry, hue, intensity;
+    if (currentSectionState) {
+      // Use complementary geometry and harmonious color
+      geometry = getComplementaryGeometry(currentSectionState.geometry);
+      hue = getHarmoniousHue(currentSectionState.hue);
+      intensity = currentSectionState.intensity;
+    } else {
+      // Fallback to random if section state not yet loaded
+      geometry = ['tesseract', '24-cell', '600-cell', '120-cell', '16-cell', '5-cell'][Math.floor(Math.random() * 6)];
+      hue = Math.floor(Math.random() * 360);
+      intensity = 0.6 + (Math.random() * 0.4);
+    }
 
-    vib3Frame.src = `https://domusgpt.github.io/vib3-plus-engine/?geo=${randomGeometry}&hue=${randomHue}&intensity=${randomIntensity}&auto=1&shimmer=1`;
+    vib3Frame.src = `https://domusgpt.github.io/vib3-plus-engine/?geo=${geometry}&hue=${hue}&intensity=${intensity}&auto=1&shimmer=1&debug=false&quiet=true`;
   }
 
   /**
