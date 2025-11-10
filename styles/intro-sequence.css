@@ -4,7 +4,7 @@
  * © 2025 Clear Seas Solutions LLC
  */
 
-/* ===== INTRO OVERLAY ===== */
+/* ===== INTRO OVERLAY (SCROLL-BASED) ===== */
 .intro-overlay {
     position: fixed;
     top: 0;
@@ -17,6 +17,31 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(20px);
+    pointer-events: none; /* Don't block interactions */
+}
+
+/* Scroll indicator */
+.intro-overlay::after {
+    content: '↓ Scroll to Begin ↓';
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(0, 212, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    animation: pulse-indicator 2s ease-in-out infinite;
+}
+
+@keyframes pulse-indicator {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
 }
 
 .intro-content {

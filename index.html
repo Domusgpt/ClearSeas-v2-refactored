@@ -416,10 +416,10 @@
     <script src="scripts/video-backgrounds.js" defer></script>
     <script src="scripts/vib3-card-interactions.js" defer></script>
 
-    <!-- Enhanced Visualization System -->
+    <!-- Enhanced Visualization System with Scroll Intro -->
     <script type="module">
         import { ClearSeasEnhancedApplication } from './src/js/app-enhanced.js';
-        import { IntroSequence } from './src/js/enhancements/IntroSequence.js';
+        import { ScrollIntroSequence } from './src/js/enhancements/ScrollIntroSequence.js';
 
         // Initialize when DOM is ready
         if (document.readyState === 'loading') {
@@ -429,26 +429,28 @@
         }
 
         async function initApp() {
-            console.log('🌊 Initializing Clear Seas with Intro Sequence...');
+            console.log('🌊 Initializing Clear Seas with Scroll-Based Intro...');
 
-            // ✨ Create and play intro sequence
-            const intro = new IntroSequence(gsap);
-
-            // Play intro, then initialize app
-            await intro.play();
-
-            console.log('🌊 Initializing Clear Seas Enhanced Application...');
+            // Initialize main app first
             const app = new ClearSeasEnhancedApplication();
             await app.initialize();
 
-            // Setup logo interactions (click for flourishes)
-            intro.setupLogoInteractions();
+            // Wait for GSAP and ScrollTrigger to be available
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                // ✨ Create scroll-triggered intro sequence
+                const intro = new ScrollIntroSequence(gsap, ScrollTrigger);
+                intro.setupScrollIntro();
+                intro.setupLogoInteractions();
+
+                window.introSequence = intro;
+                console.log('✨ Scroll intro ready - scroll down to see animation!');
+            } else {
+                console.warn('⚠️ GSAP/ScrollTrigger not available - skipping intro');
+            }
 
             // Make available globally for debugging
             window.clearSeasApp = app;
-            window.introSequence = intro;
             console.log('✅ Application available at window.clearSeasApp');
-            console.log('✨ Intro available at window.introSequence (click logo for flourishes!)');
         }
     </script>
 </body>
