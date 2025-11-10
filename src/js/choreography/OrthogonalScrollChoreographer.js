@@ -320,17 +320,15 @@ export class OrthogonalScrollChoreographer {
      */
     prepareCardsForDepth(cards) {
         cards.forEach(card => {
-            // Set initial state - far in Z-space
-            // Keep cards in their normal layout position (relative positioning from CSS)
+            // Set initial state - VISIBLE and at focused position
+            // Cards should be readable by default, animations happen during scroll
             card.style.transformStyle = 'preserve-3d';
-            card.style.transform = `translateZ(${this.config.depths.far}px) scale(${this.config.scales.far})`;
-            card.style.opacity = this.config.opacities.far;
-            card.style.filter = `blur(${this.config.blurs.far}px)`;
+            card.style.transform = `translateZ(0px) scale(1.0)`;
+            card.style.opacity = '1';
+            card.style.filter = `blur(0px)`;
 
-            // Transition properties already set in CSS
-            card.style.transition = `transform ${this.config.cardTransitionDuration}s ${this.config.cardTransitionEase},
-                                     opacity ${this.config.cardTransitionDuration}s ${this.config.cardTransitionEase},
-                                     filter ${this.config.cardTransitionDuration}s ${this.config.cardTransitionEase}`;
+            // GSAP will control animations, disable CSS transitions
+            card.style.transition = 'none';
         });
     }
 
