@@ -8,6 +8,7 @@
 
 import { WorkingQuantumVisualizer } from './visualizers/WorkingQuantumVisualizer.js';
 import { OrthogonalScrollChoreographer } from './choreography/OrthogonalScrollChoreographer.js';
+import { SectionPinChoreographer } from './choreography/SectionPinChoreographer.js';
 import { Utils, Logger } from './utils/Utils.js';
 
 export class ClearSeasEnhancedApplication {
@@ -15,6 +16,7 @@ export class ClearSeasEnhancedApplication {
         this.logger = new Logger('ClearSeasEnhanced', 'info');
         this.quantumVisualizer = null;
         this.orthogonalScrollChoreographer = null;
+        this.sectionPinChoreographer = null;
         this.isInitialized = false;
 
         this.logger.info('🌊 Clear Seas Solutions - Orthogonal Depth Progression System');
@@ -54,6 +56,22 @@ export class ClearSeasEnhancedApplication {
             this.orthogonalScrollChoreographer.initialize();
             this.logger.info('✅ Orthogonal depth progression choreography initialized');
 
+            // Wait for GSAP to load
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                this.logger.warn('⏳ Waiting for GSAP and ScrollTrigger to load...');
+                await this.waitForGSAP();
+            }
+
+            // Create section pin choreographer
+            this.logger.info('📍 Creating SectionPinChoreographer...');
+            this.sectionPinChoreographer = new SectionPinChoreographer(
+                gsap,
+                ScrollTrigger,
+                this.quantumVisualizer
+            );
+            this.sectionPinChoreographer.initialize();
+            this.logger.info('✅ Section pin choreography initialized');
+
             this.isInitialized = true;
             this.logger.info('🎉 Application initialized successfully');
 
@@ -75,6 +93,20 @@ export class ClearSeasEnhancedApplication {
             requestAnimationFrame(render);
         };
         requestAnimationFrame(render);
+    }
+
+    /**
+     * Wait for GSAP and ScrollTrigger to load
+     */
+    async waitForGSAP(maxAttempts = 50, interval = 100) {
+        for (let i = 0; i < maxAttempts; i++) {
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                this.logger.info('✅ GSAP and ScrollTrigger loaded');
+                return true;
+            }
+            await new Promise(resolve => setTimeout(resolve, interval));
+        }
+        throw new Error('GSAP or ScrollTrigger failed to load');
     }
 }
 
