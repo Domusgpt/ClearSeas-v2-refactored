@@ -9,6 +9,7 @@
 import { WorkingQuantumVisualizer } from './visualizers/WorkingQuantumVisualizer.js';
 import { OrthogonalScrollChoreographer } from './choreography/OrthogonalScrollChoreographer.js';
 import { SectionPinChoreographer } from './choreography/SectionPinChoreographer.js';
+import { UnifiedAnimationCoordinator } from './animations/UnifiedAnimationCoordinator.js';
 import { Utils, Logger } from './utils/Utils.js';
 
 export class ClearSeasEnhancedApplication {
@@ -17,6 +18,7 @@ export class ClearSeasEnhancedApplication {
         this.quantumVisualizer = null;
         this.orthogonalScrollChoreographer = null;
         this.sectionPinChoreographer = null;
+        this.animationCoordinator = null;
         this.isInitialized = false;
 
         this.logger.info('🌊 Clear Seas Solutions - Orthogonal Depth Progression System');
@@ -72,8 +74,15 @@ export class ClearSeasEnhancedApplication {
             this.sectionPinChoreographer.initialize();
             this.logger.info('✅ Section pin choreography initialized');
 
+            // Create unified animation coordinator
+            this.logger.info('🎬 Creating UnifiedAnimationCoordinator...');
+            this.animationCoordinator = new UnifiedAnimationCoordinator();
+            this.animationCoordinator.initialize();
+            this.logger.info('✅ Unified animation system initialized');
+
             this.isInitialized = true;
             this.logger.info('🎉 Application initialized successfully');
+            this.logAnimationStats();
 
             window.dispatchEvent(new CustomEvent('clearSeasEnhancedReady', {
                 detail: { app: this }
@@ -107,6 +116,16 @@ export class ClearSeasEnhancedApplication {
             await new Promise(resolve => setTimeout(resolve, interval));
         }
         throw new Error('GSAP or ScrollTrigger failed to load');
+    }
+
+    /**
+     * Log animation statistics
+     */
+    logAnimationStats() {
+        if (this.animationCoordinator) {
+            const stats = this.animationCoordinator.getStats();
+            this.logger.info('📊 Animation Stats:', stats);
+        }
     }
 }
 
