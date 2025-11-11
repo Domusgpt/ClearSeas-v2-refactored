@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="styles/visual-codex.css">
     <link rel="stylesheet" href="styles/clear-seas-enhanced.css">
     <link rel="stylesheet" href="styles/video-backgrounds.css">
-    <link rel="stylesheet" href="styles/intro-sequence.css">
 
     <!-- GSAP from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -83,8 +82,10 @@
                     </ul>
                 </div>
                 <div class="hero-panels" data-animate="reveal" style="--reveal-delay: 0.15s;">
-                    <article class="signal-card vcodex-neoskeu-card vcodex-glass" data-card-hue="180">
-                        <div class="card-gradient-bg" data-gradient="cyan"></div>
+                    <article class="signal-card vcodex-neoskeu-card vcodex-glass">
+                        <div class="video-background">
+                            <video data-src="assets/videos/card-cyan.mp4" muted loop playsinline class="video-bg-cyan"></video>
+                        </div>
                         <h2>Boutique Independence</h2>
                         <p>As an independent consultancy, we build solutions tailored to your actual needs—not what fits our parent company's product suite. No hidden upsells, no forced platform lock-ins.</p>
                         <div class="signal-metadata">
@@ -92,8 +93,10 @@
                             <strong>Agile & unbiased</strong>
                         </div>
                     </article>
-                    <article class="signal-card vcodex-neoskeu-card vcodex-glass" data-card-hue="280">
-                        <div class="card-gradient-bg" data-gradient="purple"></div>
+                    <article class="signal-card vcodex-neoskeu-card vcodex-glass">
+                        <div class="video-background">
+                            <video data-src="assets/videos/card-tech.mp4" muted loop playsinline class="video-bg-tech"></video>
+                        </div>
                         <h2>Cost-Effective Excellence</h2>
                         <p>Without corporate overhead or multi-tier sales funnels, we deliver enterprise-grade AI at lean startup economics. You pay for expertise and results, not bureaucracy.</p>
                         <div class="signal-metadata">
@@ -101,8 +104,10 @@
                             <strong>Value over volume</strong>
                         </div>
                     </article>
-                    <article class="signal-card vcodex-neoskeu-card vcodex-glass maritime" data-card-hue="330">
-                        <div class="card-gradient-bg" data-gradient="magenta"></div>
+                    <article class="signal-card vcodex-neoskeu-card vcodex-glass maritime">
+                        <div class="video-background">
+                            <video data-src="assets/videos/card-magenta.mp4" muted loop playsinline class="video-bg-magenta"></video>
+                        </div>
                         <h2>Real-World Experience</h2>
                         <p>Decades navigating complex industries—from maritime logistics to regulatory compliance—means we understand business problems, not just algorithms.</p>
                         <div class="signal-metadata">
@@ -126,8 +131,7 @@
                     <p>Whether you're a three-person startup or a multinational corporation, we build AI solutions scaled to your needs and budget—from quick-win automations to transformative intelligence platforms.</p>
                 </div>
                 <div class="capabilities-grid">
-                    <article class="capability-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" data-card-hue="150">
-                        <div class="card-gradient-bg" data-gradient="green"></div>
+                    <article class="capability-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal">
                         <div class="h-1 w-16 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full mb-6" style="height: 4px; width: 64px; background: linear-gradient(90deg, #00d4ff, #ff006e); border-radius: 999px; margin-bottom: 1.5rem;"></div>
                         <h3>Custom AI Development</h3>
                         <p>We build AI solutions designed around your specific workflow, data, and goals—whether it's automating repetitive tasks, analyzing customer behavior, or optimizing operations.</p>
@@ -137,8 +141,7 @@
                             <li>Data analysis & predictive systems</li>
                         </ul>
                     </article>
-                    <article class="capability-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.1s;" data-card-hue="30">
-                        <div class="card-gradient-bg" data-gradient="orange"></div>
+                    <article class="capability-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.1s;">
                         <div class="h-1 w-16 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full mb-6" style="height: 4px; width: 64px; background: linear-gradient(90deg, #00d4ff, #ff006e); border-radius: 999px; margin-bottom: 1.5rem;"></div>
                         <h3>AI Strategy & Planning</h3>
                         <p>Not sure where AI fits in your business? We'll assess your operations, identify high-value opportunities, and create a practical roadmap that makes sense for your budget.</p>
@@ -148,8 +151,7 @@
                             <li>Phased implementation plans</li>
                         </ul>
                     </article>
-                    <article class="capability-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.2s;" data-card-hue="180">
-                        <div class="card-gradient-bg" data-gradient="cyan"></div>
+                    <article class="capability-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.2s;">
                         <div class="h-1 w-16 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full mb-6" style="height: 4px; width: 64px; background: linear-gradient(90deg, #00d4ff, #ff006e); border-radius: 999px; margin-bottom: 1.5rem;"></div>
                         <h3>Integration & Support</h3>
                         <p>We don't just build and disappear. Our solutions integrate smoothly with your existing tools, and we provide hands-on training and ongoing support.</p>
@@ -416,10 +418,9 @@
     <script src="scripts/video-backgrounds.js" defer></script>
     <script src="scripts/vib3-card-interactions.js" defer></script>
 
-    <!-- Enhanced Visualization System with Scroll Intro -->
+    <!-- Enhanced Visualization System -->
     <script type="module">
         import { ClearSeasEnhancedApplication } from './src/js/app-enhanced.js';
-        import { ScrollIntroSequence } from './src/js/enhancements/ScrollIntroSequence.js';
 
         // Initialize when DOM is ready
         if (document.readyState === 'loading') {
@@ -429,24 +430,9 @@
         }
 
         async function initApp() {
-            console.log('🌊 Initializing Clear Seas with Scroll-Based Intro...');
-
-            // Initialize main app first
+            console.log('🌊 Initializing Clear Seas Enhanced Application...');
             const app = new ClearSeasEnhancedApplication();
             await app.initialize();
-
-            // Wait for GSAP and ScrollTrigger to be available
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-                // ✨ Create scroll-triggered intro sequence
-                const intro = new ScrollIntroSequence(gsap, ScrollTrigger);
-                intro.setupScrollIntro();
-                intro.setupLogoInteractions();
-
-                window.introSequence = intro;
-                console.log('✨ Scroll intro ready - scroll down to see animation!');
-            } else {
-                console.warn('⚠️ GSAP/ScrollTrigger not available - skipping intro');
-            }
 
             // Make available globally for debugging
             window.clearSeasApp = app;
