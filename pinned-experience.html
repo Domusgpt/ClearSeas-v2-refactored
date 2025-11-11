@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Seas - Pinned Card Experience</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Quantum visualizer background */
+        #quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        /* Pinned sections - each gets enough space for pinning */
+        .pinned-section {
+            position: relative;
+            height: 300vh; /* 3x viewport height for smooth pinning */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* Cards start small, expand to fullscreen when pinned */
+        .pinned-card {
+            position: relative;
+            width: 90vw;
+            height: 80vh;
+            background: rgba(10, 14, 22, 0.8);
+            backdrop-filter: blur(40px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Card content container */
+        .pinned-card__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 4rem;
+        }
+
+        .pinned-card__eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(0, 212, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .pinned-card__title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pinned-card__text {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        /* Visual background layer */
+        .pinned-card__visual-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        /* Gradient variations */
+        .visual-bg--cyan {
+            background: radial-gradient(circle at 60% 40%, rgba(0, 212, 255, 0.5), transparent 70%);
+        }
+
+        .visual-bg--purple {
+            background: radial-gradient(circle at 40% 60%, rgba(192, 132, 252, 0.5), transparent 70%);
+        }
+
+        .visual-bg--green {
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 150, 0.5), transparent 70%);
+        }
+
+        .visual-bg--magenta {
+            background: radial-gradient(circle at 30% 70%, rgba(255, 0, 110, 0.5), transparent 70%);
+        }
+
+        /* Card-specific unique elements */
+        .unique-element {
+            position: absolute;
+            opacity: 0;
+        }
+
+        /* Card 1: Floating data points */
+        .data-point {
+            width: 8px;
+            height: 8px;
+            background: rgba(0, 212, 255, 0.6);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        /* Card 2: Geometric shapes */
+        .geo-shape {
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(192, 132, 252, 0.4);
+            position: absolute;
+        }
+
+        /* Card 3: Text fragments */
+        .text-fragment {
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(0, 255, 150, 0.1);
+            position: absolute;
+            font-family: monospace;
+        }
+
+        /* Card 4: Connecting lines */
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 110, 0.4), transparent);
+        }
+
+        /* Active state */
+        .is-active .pinned-card__visual-bg {
+            opacity: 0.6;
+        }
+    </style>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Quantum Visualizer -->
+    <canvas id="quantum-bg"></canvas>
+
+    <!-- CARD 1: Hero - Data points floating -->
+    <section class="pinned-section"
+             data-viz-hue="180"
+             data-viz-geometry="2"
+             data-viz-intensity="0.8"
+             data-viz-chaos="0.15"
+             data-viz-speed="1.2"
+             data-viz-grid="25">
+
+        <div class="pinned-card">
+            <div class="pinned-card__visual-bg visual-bg--cyan"></div>
+
+            <!-- Unique: Floating data points -->
+            <div class="data-point unique-element" style="top: 20%; left: 15%;"></div>
+            <div class="data-point unique-element" style="top: 40%; left: 80%;"></div>
+            <div class="data-point unique-element" style="top: 70%; left: 25%;"></div>
+            <div class="data-point unique-element" style="top: 85%; left: 70%;"></div>
+            <div class="data-point unique-element" style="top: 30%; left: 50%;"></div>
+
+            <div class="pinned-card__content">
+                <p class="pinned-card__eyebrow">Clear Seas Solutions</p>
+                <h1 class="pinned-card__title">AI-Powered Maritime Intelligence</h1>
+                <p class="pinned-card__text">
+                    We architect intelligent systems that adapt to your vision,
+                    your workflow, and your future.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARD 2: Boutique - Geometric shapes rotating -->
+    <section class="pinned-section"
+             data-viz-hue="280"
+             data-viz-geometry="7"
+             data-viz-intensity="0.9"
+             data-viz-chaos="0.35"
+             data-viz-speed="1.5"
+             data-viz-grid="45">
+
+        <div class="pinned-card">
+            <div class="pinned-card__visual-bg visual-bg--purple"></div>
+
+            <!-- Unique: Rotating geometric shapes -->
+            <div class="geo-shape unique-element" style="top: 10%; left: 20%; transform: rotate(15deg);"></div>
+            <div class="geo-shape unique-element" style="top: 50%; left: 70%; transform: rotate(45deg); width: 80px; height: 80px;"></div>
+            <div class="geo-shape unique-element" style="top: 75%; left: 30%; transform: rotate(-30deg); border-radius: 50%;"></div>
+
+            <div class="pinned-card__content">
+                <p class="pinned-card__eyebrow">Our Philosophy</p>
+                <h2 class="pinned-card__title">Boutique Intelligence</h2>
+                <p class="pinned-card__text">
+                    No account managers. No bloated overhead. Just expert AI architects
+                    who build your solution from concept to deployment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARD 3: Development - Code fragments -->
+    <section class="pinned-section"
+             data-viz-hue="150"
+             data-viz-geometry="5"
+             data-viz-intensity="0.85"
+             data-viz-chaos="0.28"
+             data-viz-speed="1.4"
+             data-viz-grid="40">
+
+        <div class="pinned-card">
+            <div class="pinned-card__visual-bg visual-bg--green"></div>
+
+            <!-- Unique: Floating code fragments -->
+            <div class="text-fragment unique-element" style="top: 15%; left: 5%;">{"}</div>
+            <div class="text-fragment unique-element" style="top: 45%; left: 75%;">AI</div>
+            <div class="text-fragment unique-element" style="top: 80%; left: 15%;">&#60;/&#62;</div>
+            <div class="text-fragment unique-element" style="top: 25%; right: 10%;">fn()</div>
+
+            <div class="pinned-card__content">
+                <p class="pinned-card__eyebrow">What We Build</p>
+                <h2 class="pinned-card__title">Custom AI Development</h2>
+                <p class="pinned-card__text">
+                    From process automation to predictive analytics, we build AI systems
+                    that understand your unique workflow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARD 4: Contact - Connection lines -->
+    <section class="pinned-section"
+             data-viz-hue="330"
+             data-viz-geometry="0"
+             data-viz-intensity="0.6"
+             data-viz-chaos="0.08"
+             data-viz-speed="0.6"
+             data-viz-grid="12">
+
+        <div class="pinned-card">
+            <div class="pinned-card__visual-bg visual-bg--magenta"></div>
+
+            <!-- Unique: Connecting lines -->
+            <div class="connection-line unique-element" style="top: 30%; left: 10%; width: 200px;"></div>
+            <div class="connection-line unique-element" style="top: 60%; left: 60%; width: 300px;"></div>
+            <div class="connection-line unique-element" style="top: 80%; left: 20%; width: 150px; transform: rotate(45deg);"></div>
+
+            <div class="pinned-card__content">
+                <p class="pinned-card__eyebrow">Get Started</p>
+                <h2 class="pinned-card__title">Let's Build Together</h2>
+                <p class="pinned-card__text">
+                    Free AI consultation. No sales pitch. Just honest conversation
+                    about what AI can do for your business.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { WorkingQuantumVisualizer } from './src/js/visualization/WorkingQuantumVisualizer.js';
+        import { PinnedCardChoreographer } from './src/js/choreography/PinnedCardChoreographer.js';
+
+        async function init() {
+            console.log('🎬 Initializing Pinned Card Experience...');
+
+            // Initialize visualizer
+            const visualizer = new WorkingQuantumVisualizer('quantum-bg');
+            await visualizer.initialize();
+            visualizer.startRenderLoop();
+
+            // Wait for GSAP
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Initialize choreographer
+                const choreographer = new PinnedCardChoreographer(gsap, ScrollTrigger, visualizer);
+                choreographer.setupPinnedCards();
+                choreographer.setupCardSpecificAnimations();
+
+                window.pinnedExp = { visualizer, choreographer };
+                console.log('✅ Ready! Scroll to see cards pin and morph');
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
