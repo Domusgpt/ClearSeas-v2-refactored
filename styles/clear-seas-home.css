@@ -338,11 +338,17 @@ body {
   position: relative;
   padding: var(--space-6);
   border-radius: var(--space-3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(165deg, rgba(12, 16, 26, 0.92), rgba(24, 28, 38, 0.65));
-  backdrop-filter: blur(18px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 14, 22, 0.85);
+  backdrop-filter: blur(40px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 320px;
 }
 
 .signal-card::after {
@@ -361,10 +367,15 @@ body {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: var(--font-size-2xl);
   margin-bottom: var(--space-4);
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
 }
 
 .signal-card p {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 2;
 }
 
 .signal-card .signal-metadata {
@@ -430,11 +441,17 @@ body {
 .capability-card {
   padding: var(--space-6);
   border-radius: var(--space-3);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(14, 18, 26, 0.78);
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 14, 22, 0.85);
+  backdrop-filter: blur(40px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   transition: transform var(--duration-normal) var(--ease-in-out),
     border-color var(--duration-normal) var(--ease-in-out);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 360px;
 }
 
 .capability-card:hover,
@@ -446,6 +463,8 @@ body {
 .capability-card h3 {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: var(--font-size-2xl);
+  color: #ffffff;
+  margin-bottom: var(--space-4);
 }
 
 .capability-card ul {
