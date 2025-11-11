@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Clear Seas Solutions - Avant-Garde AI Experience">
+    <title>Clear Seas Solutions - Avant-Garde Experience</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/avant-garde-cards.css">
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Quick reset and base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0e16;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Quantum visualizer background */
+        #quantum-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Quantum Visualizer Background -->
+    <canvas id="quantum-background"></canvas>
+
+    <!-- Hero Section - 250vh tall -->
+    <section class="avant-section avant-section--hero"
+             data-visualizer-state
+             data-viz-hue="180"
+             data-viz-geometry="2"
+             data-viz-intensity="0.8"
+             data-viz-chaos="0.1"
+             data-viz-speed="1.2"
+             data-viz-grid="25">
+
+        <div class="avant-card"
+             data-card-title="AI-Powered Maritime Intelligence"
+             data-card-hue="180"
+             data-card-geometry="2"
+             data-card-intensity="0.9"
+             data-card-chaos="0.15"
+             data-card-speed="1.3"
+             data-card-grid="30"
+             data-card-morph-style="blend">
+
+            <div class="avant-card__content" data-parallax-depth="0.5">
+                <p class="avant-card__eyebrow">Clear Seas Solutions</p>
+                <h1 class="avant-card__title">Revolutionary AI Architecture for Modern Business</h1>
+                <p class="avant-card__text">
+                    We don't build AI solutions that fit templates. We architect intelligent systems
+                    that adapt to your vision, your workflow, and your future.
+                </p>
+                <a href="#capabilities" class="avant-card__cta">
+                    <span>Explore Our Approach</span>
+                    <span class="avant-card__cta-icon">→</span>
+                </a>
+            </div>
+
+            <div class="avant-card__visual" data-parallax-depth="1">
+                <div class="avant-card__visual-bg" data-gradient="cyan"></div>
+                <div class="avant-card__morph"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique Independence Card -->
+    <section class="avant-section avant-section--capabilities" id="capabilities"
+             data-visualizer-state
+             data-viz-hue="280"
+             data-viz-geometry="7"
+             data-viz-intensity="0.9"
+             data-viz-chaos="0.3"
+             data-viz-speed="1.5"
+             data-viz-grid="45">
+
+        <div class="avant-card"
+             data-card-title="Boutique Independence"
+             data-card-hue="280"
+             data-card-geometry="7"
+             data-card-intensity="0.95"
+             data-card-chaos="0.35"
+             data-card-speed="1.6"
+             data-card-grid="50"
+             data-card-morph-style="wave">
+
+            <div class="avant-card__content" data-parallax-depth="0.5">
+                <p class="avant-card__eyebrow">Our Philosophy</p>
+                <h2 class="avant-card__title">Small Team, Massive Intelligence</h2>
+                <p class="avant-card__text">
+                    No account managers. No bloated overhead. Just two expert AI architects
+                    who actually build your solution from concept to deployment.
+                </p>
+                <ul class="avant-card__features">
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">✓</span>
+                        <span class="avant-card__feature-text">Direct collaboration with AI architects</span>
+                    </li>
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">✓</span>
+                        <span class="avant-card__feature-text">No sales-to-engineering handoff delays</span>
+                    </li>
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">✓</span>
+                        <span class="avant-card__feature-text">Boutique pricing without enterprise bloat</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="avant-card__visual" data-parallax-depth="1">
+                <div class="avant-card__visual-bg" data-gradient="purple"></div>
+                <div class="avant-card__morph"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom AI Development Card -->
+    <section class="avant-section avant-section--capabilities"
+             data-visualizer-state
+             data-viz-hue="150"
+             data-viz-geometry="5"
+             data-viz-intensity="0.85"
+             data-viz-chaos="0.25"
+             data-viz-speed="1.4"
+             data-viz-grid="40">
+
+        <div class="avant-card"
+             data-card-title="Custom AI Development"
+             data-card-hue="150"
+             data-card-geometry="5"
+             data-card-intensity="0.9"
+             data-card-chaos="0.3"
+             data-card-speed="1.5"
+             data-card-grid="45"
+             data-card-morph-style="blend">
+
+            <div class="avant-card__content" data-parallax-depth="0.5">
+                <p class="avant-card__eyebrow">What We Build</p>
+                <h2 class="avant-card__title">AI That Thinks Like Your Business</h2>
+                <p class="avant-card__text">
+                    From process automation to predictive analytics, we build AI systems
+                    that understand your unique workflow and scale with your ambitions.
+                </p>
+                <ul class="avant-card__features">
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">⚡</span>
+                        <span class="avant-card__feature-text">Process automation & intelligent agents</span>
+                    </li>
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">🧠</span>
+                        <span class="avant-card__feature-text">Custom machine learning models</span>
+                    </li>
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">📊</span>
+                        <span class="avant-card__feature-text">Data analysis & predictive systems</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="avant-card__visual" data-parallax-depth="1">
+                <div class="avant-card__visual-bg" data-gradient="green"></div>
+                <div class="avant-card__morph"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products & Platforms Card -->
+    <section class="avant-section avant-section--research"
+             data-visualizer-state
+             data-viz-hue="200"
+             data-viz-geometry="3"
+             data-viz-intensity="1.0"
+             data-viz-chaos="0.5"
+             data-viz-speed="1.8"
+             data-viz-grid="60">
+
+        <div class="avant-card"
+             data-card-title="Our Ecosystem"
+             data-card-hue="200"
+             data-card-geometry="3"
+             data-card-intensity="1.0"
+             data-card-chaos="0.55"
+             data-card-speed="1.9"
+             data-card-grid="65"
+             data-card-morph-style="snap">
+
+            <div class="avant-card__content" data-parallax-depth="0.5">
+                <p class="avant-card__eyebrow">Innovation Portfolio</p>
+                <h2 class="avant-card__title">Research-Driven SaaS Platforms</h2>
+                <p class="avant-card__text">
+                    Our product ecosystem represents years of R&D in AI architecture,
+                    geometric cognition, and autonomous systems — now available as managed platforms.
+                </p>
+                <ul class="avant-card__features">
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">🔮</span>
+                        <span class="avant-card__feature-text">Reposiologist - Git branch archaeology</span>
+                    </li>
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">🌊</span>
+                        <span class="avant-card__feature-text">Parserator - Intelligent data parsing</span>
+                    </li>
+                    <li class="avant-card__feature">
+                        <span class="avant-card__feature-icon">🛡️</span>
+                        <span class="avant-card__feature-text">Nimbus Guardian - AI security monitoring</span>
+                    </li>
+                </ul>
+                <a href="#contact" class="avant-card__cta">
+                    <span>Explore Our Platforms</span>
+                    <span class="avant-card__cta-icon">→</span>
+                </a>
+            </div>
+
+            <div class="avant-card__visual" data-parallax-depth="1">
+                <div class="avant-card__visual-bg" data-gradient="cyan"></div>
+                <div class="avant-card__morph"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Card -->
+    <section class="avant-section avant-section--contact" id="contact"
+             data-visualizer-state
+             data-viz-hue="330"
+             data-viz-geometry="0"
+             data-viz-intensity="0.6"
+             data-viz-chaos="0.05"
+             data-viz-speed="0.5"
+             data-viz-grid="10">
+
+        <div class="avant-card"
+             data-card-title="Start Your AI Journey"
+             data-card-hue="330"
+             data-card-geometry="0"
+             data-card-intensity="0.7"
+             data-card-chaos="0.08"
+             data-card-speed="0.6"
+             data-card-grid="12"
+             data-card-morph-style="blend">
+
+            <div class="avant-card__content" data-parallax-depth="0.5">
+                <p class="avant-card__eyebrow">Get Started</p>
+                <h2 class="avant-card__title">Let's Build Something Revolutionary</h2>
+                <p class="avant-card__text">
+                    Free AI consultation. No sales pitch. Just honest conversation about
+                    what AI can actually do for your business.
+                </p>
+                <a href="mailto:contact@clearseassolutions.com" class="avant-card__cta">
+                    <span>Schedule Free Consultation</span>
+                    <span class="avant-card__cta-icon">✉</span>
+                </a>
+            </div>
+
+            <div class="avant-card__visual" data-parallax-depth="1">
+                <div class="avant-card__visual-bg" data-gradient="magenta"></div>
+                <div class="avant-card__morph"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { WorkingQuantumVisualizer } from './src/js/visualization/WorkingQuantumVisualizer.js';
+        import { AvantGardeScrollChoreographer } from './src/js/choreography/AvantGardeScrollChoreographer.js';
+
+        async function initAvantGarde() {
+            console.log('🎨 Initializing Avant-Garde Experience...');
+
+            // Initialize visualizer
+            const visualizer = new WorkingQuantumVisualizer('quantum-background');
+            await visualizer.initialize();
+            visualizer.startRenderLoop();
+
+            // Wait for GSAP
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Initialize avant-garde choreographer
+                const choreographer = new AvantGardeScrollChoreographer(gsap, ScrollTrigger, visualizer);
+                choreographer.setupElongatedScroll();
+
+                // Make available globally
+                window.avantGarde = {
+                    visualizer,
+                    choreographer
+                };
+
+                console.log('✅ Avant-Garde experience ready!');
+                console.log('🎬 Scroll to experience morphing cards and visualizers');
+            } else {
+                console.warn('⚠️ GSAP not loaded - falling back to basic experience');
+            }
+        }
+
+        // Initialize when DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAvantGarde);
+        } else {
+            initAvantGarde();
+        }
+    </script>
+</body>
+</html>
