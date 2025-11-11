@@ -49,18 +49,20 @@
 
 /* ==================== SECTION ENTRANCE SYSTEM ==================== */
 
-/* All sections get smooth entrance by default */
-section.section {
+/* All sections get smooth entrance by default - EXCEPT pinned sections */
+section.section:not([data-section-pin]) {
     position: relative;
     overflow: hidden;
 }
 
-/* Section Reveal Observer - Applied by JS */
-section.section:not(.is-revealed) {
+/* Section Reveal Observer - Applied by JS - ONLY for non-pinned sections */
+section.section:not([data-section-pin]):not(.is-revealed),
+section.hero:not(.is-revealed) {
     opacity: 0;
 }
 
-section.section.is-revealed {
+section.section:not([data-section-pin]).is-revealed,
+section.hero.is-revealed {
     animation: sectionReveal var(--anim-duration-slow) var(--anim-ease-entrance) forwards;
 }
 
@@ -77,8 +79,9 @@ section.section.is-revealed {
 
 /* ==================== UNIFIED FLOW TRANSITIONS ==================== */
 
-/* Flowing gradient wave between sections */
-section.section::before {
+/* Flowing gradient wave between sections - ONLY for non-pinned sections */
+section.section:not([data-section-pin])::before,
+section.hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -95,9 +98,11 @@ section.section::before {
     );
     opacity: 0;
     transition: opacity var(--anim-duration-normal) var(--anim-ease-smooth);
+    z-index: 10;
 }
 
-section.section.is-revealed::before {
+section.section:not([data-section-pin]).is-revealed::before,
+section.hero.is-revealed::before {
     animation: flowingBorder var(--anim-duration-slowest) var(--anim-ease-smooth) forwards;
 }
 
@@ -115,8 +120,9 @@ section.section.is-revealed::before {
     }
 }
 
-/* Flowing particle effects */
-section.section::after {
+/* Flowing particle effects - ONLY for non-pinned sections */
+section.section:not([data-section-pin])::after,
+section.hero::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -136,7 +142,8 @@ section.section::after {
     z-index: 0;
 }
 
-section.section.is-revealed::after {
+section.section:not([data-section-pin]).is-revealed::after,
+section.hero.is-revealed::after {
     animation: particleBurst var(--anim-duration-slowest) var(--anim-ease-entrance) forwards;
 }
 
@@ -156,8 +163,9 @@ section.section.is-revealed::after {
 
 /* ==================== CONTENT REVEAL SYSTEM ==================== */
 
-/* Staggered content reveals */
-[data-animate="reveal"] {
+/* Staggered content reveals - for non-pinned sections only */
+section:not([data-section-pin]) [data-animate="reveal"],
+section.hero [data-animate="reveal"] {
     opacity: 0;
     transform: translateY(var(--anim-translate-md));
     transition:
@@ -166,9 +174,16 @@ section.section.is-revealed::after {
     transition-delay: var(--reveal-delay, 0s);
 }
 
-section.is-revealed [data-animate="reveal"] {
+section:not([data-section-pin]).is-revealed [data-animate="reveal"],
+section.hero.is-revealed [data-animate="reveal"] {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Pinned sections keep their data-animate elements visible for GSAP */
+section[data-section-pin] [data-animate="reveal"] {
+    opacity: 1;
+    transform: none;
 }
 
 /* Reveal delay variants */
@@ -186,14 +201,11 @@ section.is-revealed [data-animate="reveal"] {
 
 /* ==================== CARD ANIMATIONS ==================== */
 
-/* Unified card entrance */
-.signal-card,
-.capability-card,
-.carousel-card,
-.stat-card,
-.timeline-card,
-.step,
-.featured-product {
+/* Unified card entrance - ONLY for non-pinned sections */
+section:not([data-section-pin]) .signal-card,
+section:not([data-section-pin]) .capability-card,
+section:not([data-section-pin]) .step,
+section.hero .signal-card {
     opacity: 0;
     transform: translateY(var(--anim-translate-lg)) scale(0.95);
     transition:
@@ -202,52 +214,51 @@ section.is-revealed [data-animate="reveal"] {
     transition-delay: var(--card-delay, 0s);
 }
 
-section.is-revealed .signal-card,
-section.is-revealed .capability-card,
-section.is-revealed .carousel-card,
-section.is-revealed .stat-card,
-section.is-revealed .timeline-card,
-section.is-revealed .step,
-section.is-revealed .featured-product {
+section:not([data-section-pin]).is-revealed .signal-card,
+section:not([data-section-pin]).is-revealed .capability-card,
+section:not([data-section-pin]).is-revealed .step,
+section.hero.is-revealed .signal-card {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
-/* Stagger card animations */
-section.is-revealed .signal-card:nth-child(1),
-section.is-revealed .capability-card:nth-child(1),
-section.is-revealed .carousel-card:nth-child(1),
-section.is-revealed .stat-card:nth-child(1),
-section.is-revealed .timeline-card:nth-child(1),
-section.is-revealed .step:nth-child(1) {
+/* Pinned section cards remain visible for GSAP control */
+section[data-section-pin] .carousel-card,
+section[data-section-pin] .stat-card,
+section[data-section-pin] .timeline-card,
+section[data-section-pin] .featured-product {
+    opacity: 1;
+    transform: none;
+}
+
+/* Stagger card animations - ONLY for non-pinned sections */
+section:not([data-section-pin]).is-revealed .signal-card:nth-child(1),
+section:not([data-section-pin]).is-revealed .capability-card:nth-child(1),
+section:not([data-section-pin]).is-revealed .step:nth-child(1),
+section.hero.is-revealed .signal-card:nth-child(1) {
     transition-delay: 0s;
 }
 
-section.is-revealed .signal-card:nth-child(2),
-section.is-revealed .capability-card:nth-child(2),
-section.is-revealed .carousel-card:nth-child(2),
-section.is-revealed .stat-card:nth-child(2),
-section.is-revealed .timeline-card:nth-child(2),
-section.is-revealed .step:nth-child(2) {
+section:not([data-section-pin]).is-revealed .signal-card:nth-child(2),
+section:not([data-section-pin]).is-revealed .capability-card:nth-child(2),
+section:not([data-section-pin]).is-revealed .step:nth-child(2),
+section.hero.is-revealed .signal-card:nth-child(2) {
     transition-delay: 0.1s;
 }
 
-section.is-revealed .signal-card:nth-child(3),
-section.is-revealed .capability-card:nth-child(3),
-section.is-revealed .carousel-card:nth-child(3),
-section.is-revealed .stat-card:nth-child(3),
-section.is-revealed .timeline-card:nth-child(3),
-section.is-revealed .step:nth-child(3) {
+section:not([data-section-pin]).is-revealed .signal-card:nth-child(3),
+section:not([data-section-pin]).is-revealed .capability-card:nth-child(3),
+section:not([data-section-pin]).is-revealed .step:nth-child(3),
+section.hero.is-revealed .signal-card:nth-child(3) {
     transition-delay: 0.2s;
 }
 
-section.is-revealed .signal-card:nth-child(4),
-section.is-revealed .capability-card:nth-child(4),
-section.is-revealed .carousel-card:nth-child(4) {
+section:not([data-section-pin]).is-revealed .signal-card:nth-child(4),
+section:not([data-section-pin]).is-revealed .capability-card:nth-child(4) {
     transition-delay: 0.3s;
 }
 
-/* Unified hover states - Smooth lift and glow */
+/* Unified hover states - Smooth lift and glow - ALL cards get this */
 .signal-card,
 .capability-card,
 .carousel-card,
@@ -255,6 +266,7 @@ section.is-revealed .carousel-card:nth-child(4) {
 .timeline-card,
 .step,
 .featured-product {
+    will-change: transform, box-shadow;
     transition:
         opacity var(--anim-duration-normal) var(--anim-ease-entrance),
         transform var(--anim-duration-fast) var(--anim-ease-smooth),
@@ -599,13 +611,16 @@ body.animations-ready section.section:not(.is-revealed) {
 
 /* ==================== PINNED SECTION OVERRIDES ==================== */
 
-/* Pinned sections still get smooth transitions but handled by GSAP */
+/* Pinned sections are ALWAYS visible - GSAP handles their animations */
 section[data-section-pin] {
     opacity: 1 !important;
+    overflow: visible !important;
 }
 
+/* Pinned sections don't get pseudo-element animations */
+section[data-section-pin]::before,
 section[data-section-pin]::after {
-    display: none; /* Disable particle burst for pinned sections */
+    display: none !important;
 }
 
 /* Title splash gets enhanced animation */

@@ -76,10 +76,11 @@ export class UnifiedAnimationCoordinator {
 
     /**
      * Find all sections that should be animated
+     * EXCLUDES pinned sections which are handled by GSAP
      */
     discoverSections() {
-        // Get all main sections
-        const mainSections = document.querySelectorAll('main .section, section.hero');
+        // Get all main sections EXCEPT pinned ones
+        const mainSections = document.querySelectorAll('main .section:not([data-section-pin]), section.hero');
 
         this.sections = Array.from(mainSections).map((section, index) => {
             // Add section class if not present
@@ -92,21 +93,29 @@ export class UnifiedAnimationCoordinator {
                 index: index,
                 id: section.id || `section-${index}`,
                 revealed: false,
-                isPinned: section.hasAttribute('data-section-pin')
+                isPinned: false // These are all non-pinned by query
             };
         });
 
-        console.log(`📋 Discovered ${this.sections.length} sections:`,
+        console.log(`📋 Discovered ${this.sections.length} non-pinned sections for animation:`,
             this.sections.map(s => s.id).join(', '));
+
+        // Log pinned sections separately
+        const pinnedSections = document.querySelectorAll('section[data-section-pin]');
+        if (pinnedSections.length > 0) {
+            console.log(`📍 Found ${pinnedSections.length} pinned sections (handled by GSAP):`,
+                Array.from(pinnedSections).map(s => s.id || 'unknown').join(', '));
+        }
     }
 
     /**
      * Setup intersection observer for scroll-triggered reveals
+     * Only observes non-pinned sections
      */
     setupIntersectionObserver() {
         const options = {
             root: null,
-            rootMargin: '-10% 0px -10% 0px', // Trigger when section is 10% into viewport
+            rootMargin: '-5% 0px -5% 0px', // Trigger when section is 5% into viewport (earlier for smoother experience)
             threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5] // Multiple thresholds for progressive reveal
         };
 
@@ -118,6 +127,12 @@ export class UnifiedAnimationCoordinator {
 
                 if (!section) return;
 
+                // Double-check it's not a pinned section
+                if (section.element.hasAttribute('data-section-pin')) {
+                    console.warn(`⚠️ Pinned section ${section.id} should not be observed!`);
+                    return;
+                }
+
                 // Reveal when entering viewport
                 if (entry.isIntersecting && !section.revealed) {
                     this.revealSection(section, entry.intersectionRatio);
@@ -125,7 +140,7 @@ export class UnifiedAnimationCoordinator {
             });
         }, options);
 
-        console.log('👀 Intersection observer configured');
+        console.log('👀 Intersection observer configured (non-pinned sections only)');
     }
 
     /**
@@ -414,10 +429,12 @@ export class UnifiedAnimationCoordinator {
      * Get animation statistics
      */
     getStats() {
+        const pinnedSections = document.querySelectorAll('section[data-section-pin]').length;
         return {
-            totalSections: this.sections.length,
+            animatedSections: this.sections.length,
             revealedSections: this.sections.filter(s => s.revealed).length,
-            pinnedSections: this.sections.filter(s => s.isPinned).length,
+            pinnedSections: pinnedSections,
+            totalSections: this.sections.length + pinnedSections,
             isReducedMotion: this.isReducedMotion,
             isReady: this.isReady
         };
