@@ -56,14 +56,27 @@ section.section:not([data-section-pin]) {
 }
 
 /* Section Reveal Observer - Applied by JS - ONLY for non-pinned sections */
-section.section:not([data-section-pin]):not(.is-revealed),
-section.hero:not(.is-revealed) {
+/* HERO ALWAYS VISIBLE - it's the first thing users see */
+section.hero {
+    opacity: 1 !important;
+}
+
+/* Other non-pinned sections wait for reveal */
+section.section:not([data-section-pin]):not(.is-revealed):not(#hero) {
     opacity: 0;
 }
 
-section.section:not([data-section-pin]).is-revealed,
-section.hero.is-revealed {
+section.section:not([data-section-pin]).is-revealed {
     animation: sectionReveal var(--anim-duration-slow) var(--anim-ease-entrance) forwards;
+}
+
+/* Fallback: Show everything after 2 seconds if JS fails */
+@keyframes emergencyReveal {
+    to { opacity: 1; }
+}
+
+body.animations-ready section.section:not([data-section-pin]):not(.is-revealed) {
+    animation: emergencyReveal 0.1s ease 2s forwards;
 }
 
 @keyframes sectionReveal {
@@ -79,9 +92,9 @@ section.hero.is-revealed {
 
 /* ==================== UNIFIED FLOW TRANSITIONS ==================== */
 
-/* Flowing gradient wave between sections - ONLY for non-pinned sections */
-section.section:not([data-section-pin])::before,
-section.hero::before {
+/* Flowing gradient wave between sections - DISABLED for now to prevent issues */
+/* Can be re-enabled later once core animations work
+section.section:not([data-section-pin]):not(.hero)::before {
     content: '';
     position: absolute;
     top: 0;
@@ -101,10 +114,10 @@ section.hero::before {
     z-index: 10;
 }
 
-section.section:not([data-section-pin]).is-revealed::before,
-section.hero.is-revealed::before {
+section.section:not([data-section-pin]).is-revealed::before {
     animation: flowingBorder var(--anim-duration-slowest) var(--anim-ease-smooth) forwards;
 }
+*/
 
 @keyframes flowingBorder {
     0% {
@@ -120,9 +133,9 @@ section.hero.is-revealed::before {
     }
 }
 
-/* Flowing particle effects - ONLY for non-pinned sections */
-section.section:not([data-section-pin])::after,
-section.hero::after {
+/* Flowing particle effects - DISABLED for now to prevent issues */
+/* Can be re-enabled later once core animations work
+section.section:not([data-section-pin]):not(.hero)::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -142,10 +155,10 @@ section.hero::after {
     z-index: 0;
 }
 
-section.section:not([data-section-pin]).is-revealed::after,
-section.hero.is-revealed::after {
+section.section:not([data-section-pin]).is-revealed::after {
     animation: particleBurst var(--anim-duration-slowest) var(--anim-ease-entrance) forwards;
 }
+*/
 
 @keyframes particleBurst {
     0% {
@@ -164,8 +177,14 @@ section.hero.is-revealed::after {
 /* ==================== CONTENT REVEAL SYSTEM ==================== */
 
 /* Staggered content reveals - for non-pinned sections only */
-section:not([data-section-pin]) [data-animate="reveal"],
+/* Hero data-animate elements are ALWAYS visible */
 section.hero [data-animate="reveal"] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Other sections wait for reveal */
+section:not([data-section-pin]):not(.hero) [data-animate="reveal"] {
     opacity: 0;
     transform: translateY(var(--anim-translate-md));
     transition:
@@ -174,8 +193,7 @@ section.hero [data-animate="reveal"] {
     transition-delay: var(--reveal-delay, 0s);
 }
 
-section:not([data-section-pin]).is-revealed [data-animate="reveal"],
-section.hero.is-revealed [data-animate="reveal"] {
+section:not([data-section-pin]):not(.hero).is-revealed [data-animate="reveal"] {
     opacity: 1;
     transform: translateY(0);
 }
@@ -202,10 +220,16 @@ section[data-section-pin] [data-animate="reveal"] {
 /* ==================== CARD ANIMATIONS ==================== */
 
 /* Unified card entrance - ONLY for non-pinned sections */
-section:not([data-section-pin]) .signal-card,
-section:not([data-section-pin]) .capability-card,
-section:not([data-section-pin]) .step,
+/* Hero cards are ALWAYS visible */
 section.hero .signal-card {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Other section cards wait for reveal */
+section:not([data-section-pin]):not(.hero) .signal-card,
+section:not([data-section-pin]):not(.hero) .capability-card,
+section:not([data-section-pin]):not(.hero) .step {
     opacity: 0;
     transform: translateY(var(--anim-translate-lg)) scale(0.95);
     transition:
@@ -214,10 +238,9 @@ section.hero .signal-card {
     transition-delay: var(--card-delay, 0s);
 }
 
-section:not([data-section-pin]).is-revealed .signal-card,
-section:not([data-section-pin]).is-revealed .capability-card,
-section:not([data-section-pin]).is-revealed .step,
-section.hero.is-revealed .signal-card {
+section:not([data-section-pin]):not(.hero).is-revealed .signal-card,
+section:not([data-section-pin]):not(.hero).is-revealed .capability-card,
+section:not([data-section-pin]):not(.hero).is-revealed .step {
     opacity: 1;
     transform: translateY(0) scale(1);
 }
@@ -573,12 +596,21 @@ section.is-revealed .contact-cta-group {
 /* ==================== LOADING & PERFORMANCE ==================== */
 
 /* Prevent FOUC - Flash of Unstyled Content */
-body:not(.animations-ready) section.section {
+/* But ensure hero and pinned sections are ALWAYS visible */
+body:not(.animations-ready) section.section:not(.hero):not([data-section-pin]) {
     opacity: 0;
 }
 
-body.animations-ready section.section:not(.is-revealed) {
-    opacity: 0;
+/* Hero is always visible */
+body:not(.animations-ready) section.hero,
+body.animations-ready section.hero {
+    opacity: 1 !important;
+}
+
+/* Pinned sections always visible */
+body:not(.animations-ready) section[data-section-pin],
+body.animations-ready section[data-section-pin] {
+    opacity: 1 !important;
 }
 
 /* Reduce motion for accessibility */

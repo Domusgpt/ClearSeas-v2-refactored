@@ -144,6 +144,26 @@ export class UnifiedAnimationCoordinator {
     }
 
     /**
+     * Reveal sections already in viewport on page load
+     */
+    revealSectionsInViewport() {
+        console.log('🔍 Checking for sections already in viewport...');
+
+        this.sections.forEach(section => {
+            const rect = section.element.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+            // Check if section is in viewport (even partially)
+            const isInViewport = rect.top < windowHeight && rect.bottom > 0;
+
+            if (isInViewport && !section.revealed) {
+                console.log(`✨ Section ${section.id} already in viewport - revealing immediately`);
+                this.revealSection(section, 1);
+            }
+        });
+    }
+
+    /**
      * Start observing all sections
      */
     observeSections() {
