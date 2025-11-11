@@ -41,6 +41,9 @@ export class UnifiedAnimationCoordinator {
         // Mark body as ready for animations
         document.body.classList.add('animations-ready');
 
+        // IMPORTANT: Check for sections already in viewport and reveal them immediately
+        this.revealSectionsInViewport();
+
         // Observe all sections
         this.observeSections();
 
