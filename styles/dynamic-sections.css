@@ -669,6 +669,251 @@
     }
 }
 
+/* ==================== ENGAGEMENT SECTION - PROCESS FLOW ==================== */
+
+.engagement-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .engagement-flow {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-4);
+    }
+}
+
+.flow-step {
+    position: relative;
+    padding: var(--space-8);
+    background: rgba(10, 14, 22, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--space-3);
+    backdrop-filter: blur(40px);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex: 1;
+}
+
+.flow-step:hover {
+    transform: scale(1.05) translateY(-8px);
+    border-color: rgba(192, 132, 252, 0.5);
+    background: rgba(15, 19, 27, 0.9);
+    box-shadow: 0 30px 80px rgba(192, 132, 252, 0.2);
+}
+
+.step-number {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: rgba(192, 132, 252, 0.4);
+    margin-bottom: var(--space-4);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.flow-step:hover .step-number {
+    color: rgba(192, 132, 252, 1);
+    transform: scale(1.2);
+}
+
+.step-content h3 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: var(--font-size-xl);
+    color: #ffffff;
+    margin-bottom: var(--space-3);
+    transition: color 0.4s ease;
+}
+
+.flow-step:hover .step-content h3 {
+    color: rgba(192, 132, 252, 1);
+}
+
+.step-content p {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.flow-connector {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(192, 132, 252, 0.3), rgba(192, 132, 252, 0.6));
+    margin: var(--space-6) auto;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.flow-connector::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(192, 132, 252, 0.6);
+    font-size: var(--font-size-lg);
+    transition: all 0.4s ease;
+}
+
+@media (min-width: 1024px) {
+    .flow-connector {
+        width: 2px;
+        height: 60px;
+        transform: rotate(90deg);
+        margin: 0;
+    }
+
+    .flow-connector::after {
+        transform: translateY(-50%) rotate(-90deg);
+    }
+}
+
+.flow-step:hover + .flow-connector {
+    background: linear-gradient(90deg, rgba(192, 132, 252, 0.6), rgba(192, 132, 252, 1));
+    transform: scale(1.5);
+}
+
+.flow-step:hover + .flow-connector::after {
+    color: rgba(192, 132, 252, 1);
+    transform: translateY(-50%) scale(1.3);
+}
+
+/* ==================== LEGACY SECTION - DOMAIN EXPERTISE ==================== */
+
+.legacy-showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .legacy-showcase {
+        grid-template-columns: 2fr 1fr;
+        gap: var(--space-12);
+    }
+}
+
+.legacy-main {
+    padding: var(--space-10);
+    background: rgba(10, 14, 22, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: var(--space-4);
+    backdrop-filter: blur(40px);
+    box-shadow: 0 20px 60px rgba(56, 189, 248, 0.1);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.legacy-main:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 30px 80px rgba(56, 189, 248, 0.25);
+}
+
+.legacy-badge-large {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(56, 189, 248, 0.15));
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(56, 189, 248, 1);
+    margin-bottom: var(--space-6);
+}
+
+.legacy-main h3 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: var(--font-size-3xl);
+    color: #ffffff;
+    margin-bottom: var(--space-6);
+    line-height: 1.2;
+}
+
+.legacy-main p {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: var(--space-6);
+}
+
+.legacy-expertise-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.legacy-expertise-list li {
+    position: relative;
+    padding-left: var(--space-8);
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-base);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.legacy-expertise-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: rgba(56, 189, 248, 0.8);
+    font-size: var(--font-size-xl);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.legacy-expertise-list li:hover {
+    color: rgba(56, 189, 248, 1);
+    transform: translateX(8px);
+}
+
+.legacy-expertise-list li:hover::before {
+    color: rgba(56, 189, 248, 1);
+    transform: scale(1.3) rotate(45deg);
+}
+
+.legacy-insight {
+    display: flex;
+    align-items: center;
+    padding: var(--space-8);
+    background: linear-gradient(135deg, rgba(10, 14, 22, 0.95), rgba(15, 19, 27, 0.85));
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: var(--space-4);
+    backdrop-filter: blur(40px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.legacy-insight:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 30px 80px rgba(56, 189, 248, 0.2);
+}
+
+.legacy-quote {
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    position: relative;
+    padding: var(--space-4);
+}
+
+.legacy-quote::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: var(--font-size-5xl);
+    color: rgba(56, 189, 248, 0.3);
+    font-family: Georgia, serif;
+}
+
 /**
  * A Paul Phillips Manifestation
  * © 2025 Clear Seas Solutions LLC - All Rights Reserved

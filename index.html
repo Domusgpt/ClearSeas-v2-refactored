@@ -407,55 +407,100 @@
         </section>
 
         <!-- Engagement Section -->
-        <section id="engagement" class="section engagement" data-scroll-lock data-geometry="3" data-color-mode="dark" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
-            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(192,132,252,0.09),_transparent_70%)]"></div>
+        <!-- Engagement Section - Pinned Process Flow -->
+        <section
+            id="engagement"
+            class="section engagement"
+            data-section-pin="engagement"
+            data-viz-hue="260"
+            data-viz-geometry="3"
+            data-viz-intensity="0.65"
+            data-viz-chaos="0.25"
+            data-viz-speed="0.95"
+            data-viz-grid="26"
+            style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(192,132,252,0.09),_transparent_70%)]" data-parallax="slow"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary to-transparent"></div>
 
-            <div class="container">
-                <div class="section-heading" data-animate="reveal">
-                    <p class="eyebrow">Engagement arc</p>
-                    <h2>From signal detection to sustained stewardship.</h2>
-                    <p>We activate teams through deliberate phases that respect business cadence while unlocking avant-garde capability.</p>
-                </div>
-                <div class="engagement-steps">
-                    <div class="step vcodex-neoskeu-card vcodex-glass" data-animate="reveal">
-                        <div class="step-index">01</div>
-                        <h3>Discovery immersion</h3>
-                        <p>Executive and operator sessions that map ambition, constraints, data realities, and regulatory nuance.</p>
+            <!-- Title Splash -->
+            <div data-section-title>
+                <h2 class="section-title-splash">Our Engagement Arc</h2>
+                <p class="section-subtitle-splash">From signal detection to sustained stewardship</p>
+            </div>
+
+            <!-- Content -->
+            <div data-section-content class="container">
+                <div class="engagement-flow">
+                    <div class="flow-step" data-step="1">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Discovery Immersion</h3>
+                            <p>Executive and operator sessions that map ambition, constraints, data realities, and regulatory nuance.</p>
+                        </div>
                     </div>
-                    <div class="step vcodex-neoskeu-card vcodex-glass" data-animate="reveal" style="--reveal-delay: 0.1s;">
-                        <div class="step-index">02</div>
-                        <h3>Architectural synthesis</h3>
-                        <p>Polytopal cognition models, integration roadmaps, and pilot environments designed to prove value in controlled waves.</p>
+
+                    <div class="flow-connector"></div>
+
+                    <div class="flow-step" data-step="2">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Architectural Synthesis</h3>
+                            <p>Polytopal cognition models, integration roadmaps, and pilot environments designed to prove value in controlled waves.</p>
+                        </div>
                     </div>
-                    <div class="step vcodex-neoskeu-card vcodex-glass" data-animate="reveal" style="--reveal-delay: 0.2s;">
-                        <div class="step-index">03</div>
-                        <h3>Operational resonance</h3>
-                        <p>Embedded guidance, training curricula, and observability loops that ensure AI becomes a trusted collaborator.</p>
+
+                    <div class="flow-connector"></div>
+
+                    <div class="flow-step" data-step="3">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Operational Resonance</h3>
+                            <p>Embedded guidance, training curricula, and observability loops that ensure AI becomes a trusted collaborator.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Legacy Section -->
-        <section id="legacy" class="section legacy" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
-            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.08),_transparent_70%)]"></div>
+        <!-- Legacy Section - Pinned Domain Expertise -->
+        <section
+            id="legacy"
+            class="section legacy"
+            data-section-pin="legacy"
+            data-viz-hue="200"
+            data-viz-geometry="6"
+            data-viz-intensity="0.7"
+            data-viz-chaos="0.35"
+            data-viz-speed="1.05"
+            data-viz-grid="30"
+            style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.08),_transparent_70%)]" data-parallax="fast"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-secondary to-transparent"></div>
 
-            <div class="container legacy-grid">
-                <div class="legacy-text" data-animate="reveal">
-                    <p class="eyebrow">Domain intelligence (select)</p>
-                    <h2>Global fisheries & offshore resource expertise.</h2>
-                    <p>Our heritage in seafood production, cold-chain logistics, quota management, and international compliance ensures we speak the language of regulated, capital-intensive industries.</p>
-                    <ul>
-                        <li>Integrated marketing & supply alignment across continents</li>
-                        <li>Regulatory orchestration spanning NOAA, EU, and emerging markets</li>
-                        <li>Product innovation from harvest through to market activation</li>
-                    </ul>
-                </div>
-                <div class="legacy-signal vcodex-neoskeu-card vcodex-glass" data-animate="reveal" style="--reveal-delay: 0.15s;">
-                    <div class="legacy-badge">Maritime DNA</div>
-                    <p>Deep domain empathy amplifies our ability to design AI that respects cultural, ecological, and economic dynamics.</p>
+            <!-- Title Splash -->
+            <div data-section-title>
+                <h2 class="section-title-splash">Maritime Domain Intelligence</h2>
+                <p class="section-subtitle-splash">Deep expertise in regulated, capital-intensive industries</p>
+            </div>
+
+            <!-- Content -->
+            <div data-section-content class="container">
+                <div class="legacy-showcase">
+                    <div class="legacy-main">
+                        <span class="legacy-badge-large">Maritime DNA</span>
+                        <h3>Global Fisheries & Offshore Resource Expertise</h3>
+                        <p>Our heritage in seafood production, cold-chain logistics, quota management, and international compliance ensures we speak the language of regulated, capital-intensive industries.</p>
+                        <ul class="legacy-expertise-list">
+                            <li>Integrated marketing & supply alignment across continents</li>
+                            <li>Regulatory orchestration spanning NOAA, EU, and emerging markets</li>
+                            <li>Product innovation from harvest through to market activation</li>
+                        </ul>
+                    </div>
+                    <div class="legacy-insight">
+                        <p class="legacy-quote">"Deep domain empathy amplifies our ability to design AI that respects cultural, ecological, and economic dynamics."</p>
+                    </div>
                 </div>
             </div>
         </section>

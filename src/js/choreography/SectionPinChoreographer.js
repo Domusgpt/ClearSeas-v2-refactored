@@ -103,38 +103,42 @@ export class SectionPinChoreographer {
             }
         });
 
-        // PHASE 1: Title Splash Animation (0-20%)
-        // Title scales in with dramatic effect
+        // PHASE 1: Title Splash Animation (0-25%)
+        // Title scales in with smooth elastic bounce
         tl.fromTo(titleElement,
             {
-                scale: 0.5,
+                scale: 0.3,
                 opacity: 0,
-                y: 100
+                y: 120,
+                rotationX: 15
             },
             {
                 scale: 1,
                 opacity: 1,
                 y: 0,
-                duration: 0.2,
-                ease: 'power4.out'
+                rotationX: 0,
+                duration: 0.25,
+                ease: 'elastic.out(1, 0.6)'  // Smooth elastic bounce
             },
             0
         );
 
-        // PHASE 2: Title Lock & Content Reveal (20-60%)
-        // Content fades and slides in while title stays locked
+        // PHASE 2: Title Lock & Content Reveal (25-70%)
+        // Content fades and slides in with smooth transform
         tl.fromTo(contentElement,
             {
                 opacity: 0,
-                y: 80
+                y: 100,
+                scale: 0.95
             },
             {
                 opacity: 1,
                 y: 0,
-                duration: 0.3,
-                ease: 'power3.out'
+                scale: 1,
+                duration: 0.35,
+                ease: 'power2.out'  // Smooth deceleration
             },
-            0.2
+            0.25
         );
 
         // PHASE 3: Visualizer Intensity Wave (40-80%)
@@ -158,14 +162,25 @@ export class SectionPinChoreographer {
             }
         }, 0.4);
 
-        // PHASE 4: Exit Fade (80-100%)
-        // Everything fades as next section approaches
-        tl.to([titleElement, contentElement], {
-            opacity: 0.2,
-            y: -50,
-            duration: 0.2,
-            ease: 'power2.in'
-        }, 0.8);
+        // PHASE 4: Exit Fade (75-100%)
+        // Smooth exit with scale and blur effect
+        tl.to(titleElement, {
+            opacity: 0,
+            y: -80,
+            scale: 0.8,
+            filter: 'blur(10px)',
+            duration: 0.25,
+            ease: 'power3.in'
+        }, 0.75);
+
+        tl.to(contentElement, {
+            opacity: 0,
+            y: -60,
+            scale: 0.9,
+            filter: 'blur(8px)',
+            duration: 0.25,
+            ease: 'power3.in'
+        }, 0.75);
     }
 
     /**
