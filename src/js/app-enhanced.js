@@ -9,7 +9,7 @@
 import { WorkingQuantumVisualizer } from './visualizers/WorkingQuantumVisualizer.js';
 import { OrthogonalScrollChoreographer } from './choreography/OrthogonalScrollChoreographer.js';
 import { SectionPinChoreographer } from './choreography/SectionPinChoreographer.js';
-import { UnifiedAnimationCoordinator } from './animations/UnifiedAnimationCoordinator.js';
+import { SmoothScrollAnimator } from './animations/SmoothScrollAnimator.js';
 import { Utils, Logger } from './utils/Utils.js';
 
 export class ClearSeasEnhancedApplication {
@@ -18,10 +18,10 @@ export class ClearSeasEnhancedApplication {
         this.quantumVisualizer = null;
         this.orthogonalScrollChoreographer = null;
         this.sectionPinChoreographer = null;
-        this.animationCoordinator = null;
+        this.smoothScrollAnimator = null;
         this.isInitialized = false;
 
-        this.logger.info('🌊 Clear Seas Solutions - Orthogonal Depth Progression System');
+        this.logger.info('🌊 Clear Seas Solutions - Smooth Scroll System');
     }
 
     async initialize() {
@@ -74,11 +74,12 @@ export class ClearSeasEnhancedApplication {
             this.sectionPinChoreographer.initialize();
             this.logger.info('✅ Section pin choreography initialized');
 
-            // Create unified animation coordinator
-            this.logger.info('🎬 Creating UnifiedAnimationCoordinator...');
-            this.animationCoordinator = new UnifiedAnimationCoordinator();
-            this.animationCoordinator.initialize();
-            this.logger.info('✅ Unified animation system initialized');
+            // Create smooth scroll animator
+            this.logger.info('🎬 Creating SmoothScrollAnimator...');
+            this.smoothScrollAnimator = new SmoothScrollAnimator(gsap, ScrollTrigger);
+            this.smoothScrollAnimator.initialize();
+            this.smoothScrollAnimator.setupCardHoverEffects();
+            this.logger.info('✅ Smooth scroll animations initialized');
 
             this.isInitialized = true;
             this.logger.info('🎉 Application initialized successfully');
@@ -122,8 +123,8 @@ export class ClearSeasEnhancedApplication {
      * Log animation statistics
      */
     logAnimationStats() {
-        if (this.animationCoordinator) {
-            const stats = this.animationCoordinator.getStats();
+        if (this.smoothScrollAnimator) {
+            const stats = this.smoothScrollAnimator.getStats();
             this.logger.info('📊 Animation Stats:', stats);
         }
     }

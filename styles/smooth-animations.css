@@ -1,0 +1,169 @@
+/**
+ * Smooth Animations CSS - Minimal overrides for GSAP
+ * This replaces the heavy CSS-based unified-animations.css approach
+ *
+ * Philosophy:
+ * - Let GSAP handle ALL animations (not CSS transitions)
+ * - CSS only sets up initial states and hardware acceleration
+ * - No opacity: 0 defaults that hide content
+ *
+ * © 2025 Clear Seas Solutions LLC
+ */
+
+/* ==================== HARDWARE ACCELERATION ==================== */
+
+/* Enable GPU acceleration for animated elements */
+section.section,
+section.hero,
+section[data-section-pin],
+.signal-card,
+.capability-card,
+.carousel-card,
+.stat-card,
+.timeline-card,
+.step,
+.featured-product {
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ==================== INITIAL STATES ==================== */
+
+/* All sections are visible by default - GSAP animates FROM hidden TO visible */
+section.section,
+section.hero,
+section[data-section-pin] {
+    opacity: 1 !important;
+    position: relative;
+}
+
+/* All content is visible by default - GSAP handles the hiding/showing */
+[data-animate="reveal"],
+.signal-card,
+.capability-card,
+.carousel-card,
+.stat-card,
+.timeline-card,
+.step,
+.featured-product {
+    opacity: 1 !important;
+}
+
+/* ==================== SMOOTH TRANSITIONS FOR HOVERS ==================== */
+
+/* Cards get smooth hover transitions (GSAP handles the animation) */
+.signal-card,
+.capability-card,
+.carousel-card,
+.stat-card,
+.timeline-card,
+.step,
+.featured-product {
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* ==================== PINNED SECTIONS ==================== */
+
+/* Pinned sections need proper overflow for content */
+section[data-section-pin] {
+    overflow: visible !important;
+    min-height: 100vh;
+}
+
+/* ==================== PREVENT FLASHES ==================== */
+
+/* Hide body until GSAP is ready */
+body:not(.gsap-animations-active) {
+    opacity: 0;
+}
+
+/* Once GSAP is active, show everything */
+body.gsap-animations-active {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+
+/* Smooth scrollbar for carousel */
+.product-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.product-carousel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.product-carousel::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.product-carousel::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 212, 255, 0.5);
+}
+
+/* ==================== REDUCED MOTION ==================== */
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        will-change: auto !important;
+    }
+
+    body {
+        opacity: 1 !important;
+    }
+
+    section.section,
+    section.hero,
+    section[data-section-pin],
+    [data-animate="reveal"],
+    .signal-card,
+    .capability-card,
+    .carousel-card,
+    .stat-card,
+    .timeline-card,
+    .step,
+    .featured-product {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ==================== LOADING STATE ==================== */
+
+/* Minimal loading indicator */
+body:not(.gsap-animations-active)::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid rgba(0, 212, 255, 0.2);
+    border-top-color: rgba(0, 212, 255, 1);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/**
+ * A Paul Phillips Manifestation
+ * © 2025 Clear Seas Solutions LLC - All Rights Reserved
+ */
