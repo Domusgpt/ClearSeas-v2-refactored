@@ -13,9 +13,10 @@
  */
 
 export class SmoothScrollAnimator {
-    constructor(gsap, ScrollTrigger) {
+    constructor(gsap, ScrollTrigger, quantumVisualizer = null) {
         this.gsap = gsap;
         this.ScrollTrigger = ScrollTrigger;
+        this.quantumVisualizer = quantumVisualizer;
         this.animations = [];
         this.sections = [];
 
@@ -153,9 +154,20 @@ export class SmoothScrollAnimator {
 
         console.log(`🎨 Setting up scroll animations for ${scrollSections.length} sections...`);
 
-        scrollSections.forEach(({ element, id }) => {
+        scrollSections.forEach(({ element, id }, index) => {
             // Ensure section is visible (override CSS hiding)
             this.gsap.set(element, { opacity: 1, clearProps: 'transform' });
+
+            // Get section theme for visualizer
+            const theme = element.dataset.theme || 'cyan';
+            const themeColors = {
+                cyan: { hue: 180, intensity: 0.7, chaos: 0.3 },
+                magenta: { hue: 300, intensity: 0.8, chaos: 0.4 },
+                green: { hue: 120, intensity: 0.6, chaos: 0.25 },
+                purple: { hue: 270, intensity: 0.75, chaos: 0.35 },
+                orange: { hue: 30, intensity: 0.85, chaos: 0.45 },
+                blue: { hue: 210, intensity: 0.7, chaos: 0.3 }
+            };
 
             // Create timeline for this section
             const tl = this.gsap.timeline({
@@ -165,7 +177,26 @@ export class SmoothScrollAnimator {
                     end: 'top 20%',        // Finish when section is 20% from top
                     scrub: 0.5,            // Smooth scrubbing
                     toggleActions: 'play none none reverse',
-                    onEnter: () => console.log(`✨ ${id} entering`),
+                    onEnter: () => {
+                        console.log(`✨ ${id} entering`);
+                        // Change visualizer parameters on section enter
+                        if (this.quantumVisualizer) {
+                            this.quantumVisualizer.updateParameters(themeColors[theme]);
+                            this.quantumVisualizer.setTheme(theme);
+                        }
+                    },
+                    onUpdate: (self) => {
+                        // Dynamically update visualizer during scroll
+                        if (this.quantumVisualizer && self.progress > 0 && self.progress < 1) {
+                            const progress = self.progress;
+                            this.quantumVisualizer.updateParameters({
+                                rotation: progress * 360,
+                                scale: 1 + progress * 0.2,
+                                intensity: themeColors[theme].intensity + progress * 0.2,
+                                chaos: themeColors[theme].chaos + Math.sin(progress * Math.PI) * 0.2
+                            });
+                        }
+                    },
                     markers: false         // Set to true for debugging
                 }
             });
