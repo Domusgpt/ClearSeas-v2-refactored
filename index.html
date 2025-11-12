@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="styles/visual-codex.css">
     <link rel="stylesheet" href="styles/clear-seas-enhanced.css">
     <link rel="stylesheet" href="styles/video-backgrounds.css">
+    <link rel="stylesheet" href="styles/dynamic-sections.css">
+    <link rel="stylesheet" href="styles/smooth-animations.css">
 
     <!-- GSAP from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -120,7 +122,7 @@
         </section>
 
         <!-- Capabilities Section -->
-        <section id="capabilities" class="section capabilities" data-scroll-lock data-geometry="7" data-color-mode="dark" style="background: rgba(12, 16, 26, 0.7); border-top: 1px solid rgba(255, 255, 255, 0.08);">
+        <section id="capabilities" class="section capabilities" data-theme="cyan" data-scroll-lock data-geometry="7" data-color-mode="dark" style="background: rgba(12, 16, 26, 0.7); border-top: 1px solid rgba(255, 255, 255, 0.08);">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.10),_transparent_70%)]"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary to-transparent"></div>
 
@@ -165,172 +167,248 @@
             </div>
         </section>
 
-        <!-- Products & Platforms Section -->
-        <section id="products" class="section platforms" style="background: rgba(10, 14, 22, 0.75); border-top: 1px solid rgba(255, 255, 255, 0.08);">
-            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,212,255,0.09),_transparent_70%)]"></div>
+        <!-- Products & Platforms Section - Pinned with Splash -->
+        <section
+            id="products"
+            class="section platforms"
+            data-section-pin="products"
+            data-viz-hue="180"
+            data-viz-geometry="3"
+            data-viz-intensity="0.75"
+            data-viz-chaos="0.35"
+            data-viz-speed="1.1"
+            data-viz-grid="32"
+            style="background: rgba(10, 14, 22, 0.75); border-top: 1px solid rgba(255, 255, 255, 0.08);">
+
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,212,255,0.09),_transparent_70%)]" data-parallax="slow"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-secondary to-transparent"></div>
 
-            <div class="container">
-                <div class="section-heading" data-animate="reveal">
-                    <p class="eyebrow">Our ecosystem</p>
-                    <h2>Products & Platforms</h2>
-                    <p>From SaaS platforms to research initiatives, our ecosystem represents the cutting edge of AI and machine cognition architecture.</p>
-                </div>
-                <div class="platform-grid">
-                    <!-- Reposiologist -->
-                    <a class="platform-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" href="https://reposiologist-beta.web.app" target="_blank" rel="noopener" data-animate="reveal">
-                        <div class="platform-heading">
+            <!-- Title Splash -->
+            <div data-section-title>
+                <h2 class="section-title-splash">Our Ecosystem</h2>
+                <p class="section-subtitle-splash">SaaS platforms and research initiatives at the cutting edge of AI cognition</p>
+            </div>
+
+            <!-- Content -->
+            <div data-section-content class="container">
+                <!-- Featured Showcase + Stats -->
+                <div class="products-showcase">
+                    <!-- Featured: Reposiologist -->
+                    <a
+                        class="featured-product"
+                        href="https://reposiologist-beta.web.app"
+                        target="_blank"
+                        rel="noopener"
+                        data-viz-hue="180"
+                        data-viz-geometry="4"
+                        data-viz-intensity="0.85"
+                        data-viz-chaos="0.4">
+                        <div>
+                            <span class="featured-badge">Featured Platform</span>
                             <h3>Reposiologist</h3>
-                            <span class="status">Live beta</span>
+                            <p>Automated Git repository analysis and branch archaeology. Intelligent systems that map branch families, surface valuable work, and recover lost development patterns from commit chaos.</p>
                         </div>
-                        <p>Automated Git repository analysis and branch archaeology. Intelligent systems that map branch families and surface valuable work automatically.</p>
-                        <span class="platform-link">Visit reposiologist-beta.web.app →</span>
+                        <span class="featured-link">
+                            Explore Reposiologist →
+                        </span>
                     </a>
 
-                    <!-- Parserator -->
-                    <a class="platform-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" href="https://parserator.com" target="_blank" rel="noopener" data-animate="reveal" style="--reveal-delay: 0.1s;">
-                        <div class="platform-heading">
-                            <h3>Parserator</h3>
-                            <span class="status">Live beta</span>
+                    <!-- Stats Column -->
+                    <div class="products-stats">
+                        <div class="stat-card">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Live Platforms</span>
+                            <p class="stat-description">Production-ready SaaS products serving real users</p>
                         </div>
-                        <p>Our soft-launched parserator transforms unstructured maritime, regulatory, and commercial data streams into harmonized datasets ready for intelligent orchestration.</p>
-                        <span class="platform-link">Visit parserator.com →</span>
-                    </a>
+                        <div class="stat-card">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Coming Soon</span>
+                            <p class="stat-description">Advanced AI systems in final development</p>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Total Reach</span>
+                            <p class="stat-description">Repositories analyzed, data streams processed</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <!-- Nimbus Guardian -->
-                    <a class="platform-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" href="https://nimbus-guardian.web.app/" target="_blank" rel="noopener" data-animate="reveal" style="--reveal-delay: 0.2s;">
-                        <div class="platform-heading">
-                            <h3>Nimbus Guardian</h3>
+                <!-- Horizontal Product Carousel -->
+                <div class="product-carousel-container">
+                    <p class="product-carousel-heading">All Products & Services</p>
+                    <div class="product-carousel">
+                        <!-- Parserator -->
+                        <a
+                            class="carousel-card"
+                            href="https://parserator.com"
+                            target="_blank"
+                            rel="noopener"
+                            data-viz-hue="280"
+                            data-viz-geometry="2"
+                            data-viz-intensity="0.8"
+                            data-viz-chaos="0.35">
+                            <h4>Parserator</h4>
+                            <span class="status">Live beta</span>
+                            <p>Transforms unstructured maritime, regulatory, and commercial data streams into harmonized datasets ready for intelligent orchestration.</p>
+                        </a>
+
+                        <!-- Nimbus Guardian -->
+                        <a
+                            class="carousel-card"
+                            href="https://nimbus-guardian.web.app/"
+                            target="_blank"
+                            rel="noopener"
+                            data-viz-hue="320"
+                            data-viz-geometry="5"
+                            data-viz-intensity="0.75"
+                            data-viz-chaos="0.5">
+                            <h4>Nimbus Guardian</h4>
                             <span class="status">Live</span>
-                        </div>
-                        <p>Advanced security and monitoring platform leveraging AI for threat detection, automated response systems, and intelligent infrastructure protection.</p>
-                        <span class="platform-link">Visit nimbus-guardian.web.app →</span>
-                    </a>
+                            <p>Advanced security and monitoring platform leveraging AI for threat detection, automated response systems, and intelligent infrastructure protection.</p>
+                        </a>
 
-                    <!-- Minoots - Coming Soon -->
-                    <div class="platform-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.3s;">
-                        <div class="platform-heading">
-                            <h3>Minoots</h3>
+                        <!-- Minoots -->
+                        <div
+                            class="carousel-card"
+                            data-viz-hue="40"
+                            data-viz-geometry="1"
+                            data-viz-intensity="0.7"
+                            data-viz-chaos="0.3">
+                            <h4>Minoots</h4>
                             <span class="status soon">Coming soon</span>
+                            <p><strong>Agentic Hourology Orchestrator</strong> — Temporal intelligence systems that coordinate multi-agent workflows with precision timing and adaptive scheduling.</p>
                         </div>
-                        <p><strong>Agentic Hourology Orchestrator</strong> — Temporal intelligence systems that coordinate multi-agent workflows with precision timing and adaptive scheduling.</p>
-                        <span class="platform-link">Launching soon →</span>
-                    </div>
 
-                    <!-- Vib3-Scribe - Coming Soon -->
-                    <div class="platform-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.4s;">
-                        <div class="platform-heading">
-                            <h3>Vib3-Scribe</h3>
+                        <!-- Vib3-Scribe -->
+                        <div
+                            class="carousel-card"
+                            data-viz-hue="220"
+                            data-viz-geometry="3"
+                            data-viz-intensity="0.8"
+                            data-viz-chaos="0.4">
+                            <h4>Vib3-Scribe</h4>
                             <span class="status soon">Coming soon</span>
+                            <p><strong>Train Agents in Your Writing Style</strong> — Personalized AI writing assistants that learn and replicate your unique voice, tone, and stylistic patterns.</p>
                         </div>
-                        <p><strong>Train Agents in Your Writing Style</strong> — Personalized AI writing assistants that learn and replicate your unique voice, tone, and stylistic patterns.</p>
-                        <span class="platform-link">Launching soon →</span>
-                    </div>
 
-                    <!-- Client Intelligence Stacks -->
-                    <div class="platform-card vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" data-animate="reveal" style="--reveal-delay: 0.5s;">
-                        <div class="platform-heading">
-                            <h3>Client Intelligence Stacks</h3>
+                        <!-- Client Intelligence Stacks -->
+                        <div
+                            class="carousel-card"
+                            data-viz-hue="150"
+                            data-viz-geometry="6"
+                            data-viz-intensity="0.85"
+                            data-viz-chaos="0.45">
+                            <h4>Client Intelligence Stacks</h4>
                             <span class="status">Tailored</span>
+                            <p>Co-created data fabrics, knowledge graphs, and adaptive copilots aligned to each organization's rhythm and risk profile.</p>
                         </div>
-                        <p>Co-created data fabrics, knowledge graphs, and adaptive copilots aligned to each organization's rhythm and risk profile.</p>
-                        <span class="platform-link">Deploy bespoke cognition layers →</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Research Approach Section -->
-        <section id="research" class="section research" data-scroll-lock data-geometry="5" data-color-mode="light">
-            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(0,212,255,0.08),_transparent_70%)]"></div>
-            <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary to-transparent"></div>
+        <!-- Research & Philosophy Section - Pinned Timeline -->
+        <section
+            id="research"
+            class="section research"
+            data-section-pin="research"
+            data-viz-hue="280"
+            data-viz-geometry="5"
+            data-viz-intensity="0.7"
+            data-viz-chaos="0.3"
+            data-viz-speed="0.9"
+            data-viz-grid="28"
+            style="background: rgba(8, 11, 18, 0.75); border-top: 1px solid rgba(255, 255, 255, 0.08);">
 
-            <div class="container research-grid">
-                <div class="research-text" data-animate="reveal">
-                    <p class="eyebrow">Our approach</p>
-                    <h2>Practical AI with a research foundation.</h2>
-                    <p>We stay on the cutting edge of AI technology so you don't have to. Our solutions leverage advanced techniques when they actually solve your problem—not just because they're trendy.</p>
-                    <div class="research-points">
-                        <div class="point">
-                            <h3>Problem-First Thinking</h3>
-                            <p>We start with your business challenge, then select the right AI approach—whether that's simple automation or advanced machine learning.</p>
-                        </div>
-                        <div class="point">
-                            <h3>Transparent & Explainable</h3>
-                            <p>No black-box solutions. You'll understand how your AI works, why it makes decisions, and how to maintain it.</p>
-                        </div>
-                        <div class="point">
-                            <h3>Future-Proof Architecture</h3>
-                            <p>We build systems that can grow with you—starting simple and scaling up as your needs evolve.</p>
-                        </div>
-                    </div>
-                </div>
-                <aside class="research-lab vcodex-neoskeu-card vcodex-glass" data-animate="reveal" style="--reveal-delay: 0.15s;">
-                    <div class="lab-header">
-                        <span class="lab-label">Why we're different</span>
-                        <span class="lab-metric">Independent & Honest</span>
-                    </div>
-                    <p class="lab-description">As a boutique consultancy, we have no incentive to recommend expensive solutions you don't need. Our reputation depends on delivering real value, not hitting sales quotas.</p>
-                    <ul class="lab-list">
-                        <li>No mandatory platform subscriptions</li>
-                        <li>No upselling to premium tiers</li>
-                        <li>Solutions you actually own and control</li>
-                    </ul>
-                </aside>
-            </div>
-        </section>
-
-        <!-- Research Programs Section -->
-        <section id="research-programs" class="section platforms" style="background: rgba(8, 11, 18, 0.75); border-top: 1px solid rgba(255, 255, 255, 0.08); position: relative;">
-            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,132,252,0.08),_transparent_70%)]"></div>
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,132,252,0.08),_transparent_70%)]" data-parallax="fast"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-secondary to-transparent"></div>
 
-            <div class="container">
-                <div class="section-heading" data-animate="reveal">
-                    <p class="eyebrow">Foundational research</p>
-                    <h2>Research Programs</h2>
-                    <p>Exploring the theoretical underpinnings of machine cognition, geometric computation, and organizational principles.</p>
-                </div>
-                <div class="platform-grid" style="grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: var(--space-8);">
-                    <!-- PPP -->
-                    <a class="research-lab vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" href="https://domusgpt.github.io/ppp-info-site/" target="_blank" rel="noopener" data-animate="reveal">
-                        <div class="lab-header">
-                            <span class="lab-label">Research Program</span>
-                            <span class="lab-metric">Active</span>
-                        </div>
-                        <h3 style="font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: var(--font-size-2xl); color: var(--theme-primary-light); margin: var(--space-4) 0;">Polytopal Projection Processing<br/>& Geometric Computation</h3>
-                        <p class="lab-description">Advanced mathematical frameworks for higher-dimensional geometric processing, polytope projection mathematics, and holographic visualization systems.</p>
-                        <ul class="lab-list">
-                            <li>4D+ geometric processing algorithms</li>
-                            <li>Polytopal projection mathematics</li>
-                            <li>Holographic visualization frameworks</li>
-                            <li>Multi-dimensional rendering systems</li>
-                        </ul>
-                        <span class="platform-link" style="margin-top: var(--space-4); display: block;">Explore PPP research →</span>
-                    </a>
+            <!-- Title Splash -->
+            <div data-section-title>
+                <h2 class="section-title-splash">Research & Philosophy</h2>
+                <p class="section-subtitle-splash">Practical AI architecture informed by foundational research</p>
+            </div>
 
-                    <!-- EPO -->
-                    <a class="research-lab vcodex-neoskeu-card vcodex-glass vcodex-hover-lift" href="https://entropic-principles.web.app/" target="_blank" rel="noopener" data-animate="reveal" style="--reveal-delay: 0.15s;">
-                        <div class="lab-header">
-                            <span class="lab-label">Research Program</span>
-                            <span class="lab-metric">Active</span>
+            <!-- Timeline Content -->
+            <div data-section-content class="container">
+                <div class="research-timeline-container">
+                    <!-- Timeline Line -->
+                    <div class="timeline-line"></div>
+
+                    <!-- Timeline Item 1: Approach -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-badge">Our Approach</span>
+                            <h3>Problem-First Thinking</h3>
+                            <p>We start with your business challenge, then select the right AI approach—whether that's simple automation or advanced machine learning. No black-box solutions.</p>
+                            <ul>
+                                <li>Transparent & explainable systems</li>
+                                <li>Future-proof architecture that grows with you</li>
+                                <li>Solutions you actually own and control</li>
+                            </ul>
                         </div>
-                        <h3 style="font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: var(--font-size-2xl); color: var(--theme-secondary-light); margin: var(--space-4) 0;">EPO<br/>Entropic Principals of Organization</h3>
-                        <p class="lab-description">Philosophical and mathematical investigation into entropy, information theory, and organizational dynamics for ethical AI and cognitive systems.</p>
-                        <ul class="lab-list">
-                            <li>Information-theoretic AI foundations</li>
-                            <li>Entropy in machine learning systems</li>
-                            <li>Organizational complexity theory</li>
-                            <li>Ethical AI frameworks</li>
-                        </ul>
-                        <span class="platform-link" style="margin-top: var(--space-4); display: block;">Explore EPO research →</span>
-                    </a>
+                    </div>
+
+                    <!-- Timeline Item 2: PPP Research -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <a href="https://domusgpt.github.io/ppp-info-site/" target="_blank" rel="noopener" class="timeline-card">
+                            <span class="timeline-badge">Active Research</span>
+                            <h3>Polytopal Projection Processing</h3>
+                            <p>Advanced mathematical frameworks for higher-dimensional geometric processing, polytope projection mathematics, and holographic visualization systems.</p>
+                            <ul>
+                                <li>4D+ geometric processing algorithms</li>
+                                <li>Polytopal projection mathematics</li>
+                                <li>Holographic visualization frameworks</li>
+                                <li>Multi-dimensional rendering systems</li>
+                            </ul>
+                            <span class="featured-link" style="margin-top: var(--space-4); display: block;">
+                                Explore PPP research →
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Timeline Item 3: EPO Philosophy -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <a href="https://entropic-principles.web.app/" target="_blank" rel="noopener" class="timeline-card">
+                            <span class="timeline-badge">Active Research</span>
+                            <h3>Entropic Principles of Organization</h3>
+                            <p>Philosophical and mathematical investigation into entropy, information theory, and organizational dynamics for ethical AI and cognitive systems.</p>
+                            <ul>
+                                <li>Information-theoretic AI foundations</li>
+                                <li>Entropy in machine learning systems</li>
+                                <li>Organizational complexity theory</li>
+                                <li>Ethical AI frameworks</li>
+                            </ul>
+                            <span class="featured-link" style="margin-top: var(--space-4); display: block;">
+                                Explore EPO research →
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Timeline Item 4: Client Work -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <span class="timeline-badge">Boutique Independence</span>
+                            <h3>Why We're Different</h3>
+                            <p>As a boutique consultancy, we have no incentive to recommend expensive solutions you don't need. Our reputation depends on delivering real value, not hitting sales quotas.</p>
+                            <ul>
+                                <li>No mandatory platform subscriptions</li>
+                                <li>No upselling to premium tiers</li>
+                                <li>Solutions tailored to your actual needs</li>
+                                <li>Independent advice you can trust</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Engagement Section -->
-        <section id="engagement" class="section engagement" data-scroll-lock data-geometry="3" data-color-mode="dark" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+        <section id="engagement" class="section engagement" data-theme="purple" data-scroll-lock data-geometry="3" data-color-mode="dark" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(192,132,252,0.09),_transparent_70%)]"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary to-transparent"></div>
 
@@ -361,7 +439,7 @@
         </section>
 
         <!-- Legacy Section -->
-        <section id="legacy" class="section legacy" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
+        <section id="legacy" class="section legacy" data-theme="green" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(56,189,248,0.08),_transparent_70%)]"></div>
             <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-secondary to-transparent"></div>
 
@@ -383,22 +461,66 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact" data-scroll-lock data-geometry="0" data-color-mode="light" style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
-            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,212,255,0.10),_transparent_70%)]"></div>
-            <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand-primary to-transparent"></div>
+        <!-- Contact Section - Immersive Full-Screen CTA -->
+        <section
+            id="contact"
+            class="section contact"
+            data-section-pin="contact"
+            data-viz-hue="190"
+            data-viz-geometry="0"
+            data-viz-intensity="0.9"
+            data-viz-chaos="0.6"
+            data-viz-speed="1.3"
+            data-viz-grid="40"
+            style="border-top: 1px solid rgba(255, 255, 255, 0.08);">
 
-            <div class="container contact-grid">
-                <div class="contact-text" data-animate="reveal">
-                    <p class="eyebrow">Let's talk</p>
-                    <h2>Start with a free, no-pressure AI consultation.</h2>
-                    <p>Curious about how AI could help your business? Not sure if it's worth the investment? Let's have an honest conversation about your challenges and explore what's actually possible—with zero obligation and no sales pitch.</p>
-                    <p style="margin-top: 1rem; opacity: 0.9;">We work with businesses of all sizes, from solo entrepreneurs to Fortune 500 companies. If you have a problem AI might solve, we want to hear about it.</p>
+            <div class="contact-immersive">
+                <!-- Title Splash -->
+                <div data-section-title>
+                    <h2 class="section-title-splash">Let's Build Something Extraordinary</h2>
+                    <p class="section-subtitle-splash">Start with a free, no-pressure consultation</p>
                 </div>
-                <div class="contact-actions" data-animate="reveal" style="--reveal-delay: 0.1s;">
-                    <a class="btn btn-primary vcodex-holo-button" href="mailto:connect@clearseas.ai">Get your free consultation</a>
-                    <a class="btn btn-ghost" href="mailto:connect@clearseas.ai">Email us directly</a>
-                    <a class="btn btn-soft" href="https://parserator.com" target="_blank" rel="noopener">See Parserator Demo</a>
+
+                <!-- Content -->
+                <div data-section-content class="contact-content">
+                    <p class="contact-description">
+                        Curious about how AI could transform your business? Not sure if it's worth the investment? Let's have an honest conversation about your challenges and explore what's actually possible—with zero obligation and no sales pitch.
+                    </p>
+
+                    <div class="contact-cta-group">
+                        <a class="contact-primary-btn" href="mailto:connect@clearseas.ai">
+                            Get Your Free Consultation
+                        </a>
+                        <a class="contact-secondary-btn" href="mailto:connect@clearseas.ai">
+                            Email Us Directly
+                        </a>
+                    </div>
+
+                    <div class="contact-social-links">
+                        <a href="https://parserator.com" target="_blank" rel="noopener" class="social-link" title="See Parserator Demo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/Domusgpt" target="_blank" rel="noopener" class="social-link" title="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.430.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://reposiologist-beta.web.app" target="_blank" rel="noopener" class="social-link" title="Reposiologist">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <p style="margin-top: var(--space-12); font-size: var(--font-size-sm); color: rgba(255, 255, 255, 0.6); text-align: center;">
+                        We work with businesses of all sizes, from solo entrepreneurs to Fortune 500 companies.<br/>
+                        If you have a problem AI might solve, we want to hear about it.
+                    </p>
                 </div>
             </div>
         </section>

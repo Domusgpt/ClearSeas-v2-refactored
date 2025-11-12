@@ -7,17 +7,23 @@
  */
 
 import { WorkingQuantumVisualizer } from './visualizers/WorkingQuantumVisualizer.js';
+import { MultiLayerQuantumVisualizer } from './visualizers/MultiLayerQuantumVisualizer.js';
 import { OrthogonalScrollChoreographer } from './choreography/OrthogonalScrollChoreographer.js';
+import { SectionPinChoreographer } from './choreography/SectionPinChoreographer.js';
+import { SmoothScrollAnimator } from './animations/SmoothScrollAnimator.js';
 import { Utils, Logger } from './utils/Utils.js';
 
 export class ClearSeasEnhancedApplication {
     constructor() {
         this.logger = new Logger('ClearSeasEnhanced', 'info');
         this.quantumVisualizer = null;
+        this.multiLayerVisualizer = null;
         this.orthogonalScrollChoreographer = null;
+        this.sectionPinChoreographer = null;
+        this.smoothScrollAnimator = null;
         this.isInitialized = false;
 
-        this.logger.info('🌊 Clear Seas Solutions - Orthogonal Depth Progression System');
+        this.logger.info('🌊 Clear Seas Solutions - Smooth Scroll System with Multi-Layer Quantum Visualizer');
     }
 
     async initialize() {
@@ -27,9 +33,16 @@ export class ClearSeasEnhancedApplication {
         }
 
         try {
-            this.logger.info('🌌 Creating WorkingQuantumVisualizer...');
+            this.logger.info('🌌 Creating Multi-Layer Quantum Visualizer...');
 
-            // Create working visualizer on quantum-background canvas
+            // Create multi-layer quantum visualizer (5 canvas layers)
+            this.multiLayerVisualizer = new MultiLayerQuantumVisualizer();
+            this.multiLayerVisualizer.initialize();
+            this.multiLayerVisualizer.setState('intro');
+            this.logger.info('✅ Multi-layer quantum visualizer created');
+
+            // Also create the working quantum visualizer for pinned sections
+            this.logger.info('🌌 Creating WorkingQuantumVisualizer for pinned sections...');
             this.quantumVisualizer = new WorkingQuantumVisualizer('quantum-background', {
                 role: 'background',
                 reactivity: 1.0,
@@ -42,7 +55,7 @@ export class ClearSeasEnhancedApplication {
 
             this.logger.info('✅ WorkingQuantumVisualizer created with WebGL context');
 
-            // Start render loop
+            // Start render loop for working visualizer
             this.startRenderLoop();
             this.logger.info('✅ Render loop started');
 
@@ -54,8 +67,43 @@ export class ClearSeasEnhancedApplication {
             this.orthogonalScrollChoreographer.initialize();
             this.logger.info('✅ Orthogonal depth progression choreography initialized');
 
+            // Wait for GSAP to load
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+                this.logger.warn('⏳ Waiting for GSAP and ScrollTrigger to load...');
+                await this.waitForGSAP();
+            }
+
+            // Create section pin choreographer
+            this.logger.info('📍 Creating SectionPinChoreographer...');
+            this.sectionPinChoreographer = new SectionPinChoreographer(
+                gsap,
+                ScrollTrigger,
+                this.quantumVisualizer
+            );
+            this.sectionPinChoreographer.initialize();
+            this.logger.info('✅ Section pin choreography initialized');
+
+            // Create smooth scroll animator with multi-layer visualizer
+            this.logger.info('🎬 Creating SmoothScrollAnimator...');
+            this.smoothScrollAnimator = new SmoothScrollAnimator(
+                gsap,
+                ScrollTrigger,
+                this.multiLayerVisualizer
+            );
+            this.smoothScrollAnimator.initialize();
+            this.smoothScrollAnimator.setupCardHoverEffects();
+            this.logger.info('✅ Smooth scroll animations initialized');
+
+            // Set visualizer to scrolling state after intro
+            setTimeout(() => {
+                if (this.multiLayerVisualizer) {
+                    this.multiLayerVisualizer.setState('scrolling');
+                }
+            }, 2000);
+
             this.isInitialized = true;
             this.logger.info('🎉 Application initialized successfully');
+            this.logAnimationStats();
 
             window.dispatchEvent(new CustomEvent('clearSeasEnhancedReady', {
                 detail: { app: this }
@@ -75,6 +123,30 @@ export class ClearSeasEnhancedApplication {
             requestAnimationFrame(render);
         };
         requestAnimationFrame(render);
+    }
+
+    /**
+     * Wait for GSAP and ScrollTrigger to load
+     */
+    async waitForGSAP(maxAttempts = 50, interval = 100) {
+        for (let i = 0; i < maxAttempts; i++) {
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                this.logger.info('✅ GSAP and ScrollTrigger loaded');
+                return true;
+            }
+            await new Promise(resolve => setTimeout(resolve, interval));
+        }
+        throw new Error('GSAP or ScrollTrigger failed to load');
+    }
+
+    /**
+     * Log animation statistics
+     */
+    logAnimationStats() {
+        if (this.smoothScrollAnimator) {
+            const stats = this.smoothScrollAnimator.getStats();
+            this.logger.info('📊 Animation Stats:', stats);
+        }
     }
 }
 

@@ -1,0 +1,111 @@
+/**
+ * Multi-Layer Quantum Visualizer Styles
+ * 5-layer canvas system with holographic effects
+ *
+ * © 2025 Clear Seas Solutions LLC
+ */
+
+/* VIB3+ Quantum Visualizer - FIXED BACKGROUND */
+.quantum-layers {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform, opacity, filter;
+}
+
+/* Intro state - visualizer fills screen */
+.quantum-layers.intro {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Condensing state - shrinking into card */
+.quantum-layers.condensing {
+    transform: scale(0.5);
+    opacity: 0.8;
+}
+
+/* Ejecting state - rapidly leaving */
+.quantum-layers.ejecting {
+    transform: scale(3) translate(0, -100vh);
+    opacity: 0;
+    transition: all 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Normal scroll state */
+.quantum-layers.scrolling {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Individual canvas layers */
+.quantum-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+}
+
+/* Layer-specific styles */
+#quantum-background {
+    opacity: 0.3;
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+#quantum-shadow {
+    opacity: 0.2;
+    z-index: 2;
+    mix-blend-mode: multiply;
+}
+
+#quantum-content {
+    opacity: 0.6;
+    z-index: 3;
+    mix-blend-mode: screen;
+}
+
+#quantum-highlight {
+    opacity: 0.4;
+    z-index: 4;
+    mix-blend-mode: screen;
+}
+
+#quantum-accent {
+    opacity: 0.25;
+    z-index: 5;
+    mix-blend-mode: screen;
+}
+
+/* Animation for state transitions */
+@keyframes quantum-pulse {
+    0%, 100% {
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        filter: brightness(1.2) contrast(1.1);
+    }
+}
+
+.quantum-layers.scrolling {
+    animation: quantum-pulse 4s ease-in-out infinite;
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+    .quantum-layers {
+        animation: none !important;
+        transition: opacity 0.1s ease !important;
+    }
+
+    .quantum-layers * {
+        animation: none !important;
+    }
+}
+
+/**
+ * A Paul Phillips Manifestation
+ * © 2025 Clear Seas Solutions LLC - All Rights Reserved
+ */
